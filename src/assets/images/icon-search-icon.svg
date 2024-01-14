@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: sketchtool 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_search</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="0-Style-Guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="0.0.0_Assets" sketch:type="MSArtboardGroup" transform="translate(-373.000000, -200.000000)" fill="#000000">
+            <g id="nav" sketch:type="MSLayerGroup" transform="translate(325.000000, 198.000000)">
+                <g id="search" transform="translate(48.000000, 2.000000)" sketch:type="MSShapeGroup">
+                    <g id="SEARCH-FIELD">
+                        <g id="icon_search">
+                            <path d="M14.2938822,12.5786164 L13.3905089,12.5786164 L13.0703259,12.2698685 C14.1909663,10.9662664 14.8656375,9.27387078 14.8656375,7.43281875 C14.8656375,3.32761578 11.5380217,0 7.43281875,0 C3.32761578,0 0,3.32761578 0,7.43281875 C0,11.5380217 3.32761578,14.8656375 7.43281875,14.8656375 C9.27387078,14.8656375 10.9662664,14.1909663 12.2698685,13.0703259 L12.5786164,13.3905089 L12.5786164,14.2938822 L18.2961692,20 L20,18.2961692 L14.2938822,12.5786164 L14.2938822,12.5786164 Z M7.5,12.5 C4.73333333,12.5 2.5,10.2666667 2.5,7.5 C2.5,4.73333333 4.73333333,2.5 7.5,2.5 C10.2666667,2.5 12.5,4.73333333 12.5,7.5 C12.5,10.2666667 10.2666667,12.5 7.5,12.5 L7.5,12.5 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

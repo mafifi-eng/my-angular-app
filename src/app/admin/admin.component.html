@@ -1,0 +1,33 @@
+<div class="admin-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1 style="text-align: center;" class="sidebar-title">Admin Dashboard</h1>
+        <ul style="display: block;">
+            <li><a href="#" class="disabled-link">Dashboard</a></li>
+            <li><a href="#" class="disabled-link">Users</a></li>
+            <li><a href="#" class="disabled-link">Products</a></li>
+            <li><a href="#" class="disabled-link">Settings</a></li>
+            <li><a href="#" class="disabled-link">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>Welcome, Admin!</h1>
+        </header>
+        <section>
+            <div style="text-align: center;">
+                <h1>SUPERMARKETs</h1>
+                <ul>
+                    <li>
+                        <div class="hrefStyle" (click)="carrefourLinkHandler()">Carrefour Egypt</div>
+                    </li>
+                    <li><div class="hrefStyle" (click)="spinneysLinkHandler()">Spinneys Egypt</div></li>
+                    <li><a class="disabled-link" routerLink="/link3">Seoudi</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="29" viewBox="0 0 26 29">
+    <g fill="none" fill-rule="evenodd">
+        <g fill="#000">
+            <path d="M0 14H25V17H0zM0 7H25V10H0zM0 0H25V3H0z"/>
+            <text font-family="LidlFontPro-Regular, Lidl Font Pro" font-size="8">
+                <tspan x="2" y="25">menu</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

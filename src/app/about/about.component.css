@@ -1,0 +1,21 @@
+.about-section, .team-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .team-member img {
+    width: 150px;
+    border-radius: 50%;
+  }
+  
+  .about-section{
+    margin-top: 75px;
+  }

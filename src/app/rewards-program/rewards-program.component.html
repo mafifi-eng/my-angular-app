@@ -1,0 +1,59 @@
+<div class="main-section">
+    <li class="grid-item" *ngFor="let product of products" style="flex-grow: 0; width: 50%; flex-basis: auto;">
+        <div class="card detail-card coupon-detail-card" style="min-width: 168px;">
+            <span class="card-aspect-padding" style="padding-top: 132.143%;"></span>
+            <div style="align-items: center;" class="card-content">
+                <!-- <a style="width: 250px;"
+            class="clickable link detail-card-link clickable--size-inline"
+            data-test="productCardLink"
+            href="/rewards-coupons/5011865"> -->
+                <div style="width: 250px;">
+                    <div class="card-image" tabindex="-1" data-test="cardImage">
+                        <img alt="{{product.name}}" class="img loaded"
+                            src="../../assets/images/Products/{{product.coverImage}}">
+                    </div>
+                    <div class="card-body">
+
+                        <div class="pill-wrapper-hide"></div>
+                        <h1 data-test="granulatedsugar" class="title-3 detail-card-description"
+                            style="margin-top: 25px;">
+                            {{product.englishName}}
+                        </h1>
+                        <h1 data-test="granulatedsugar" class="title-3 detail-card-description"
+                            style="margin-top: 25px;">
+                            {{product.arabicName}}
+                        </h1>
+                        <div class="stock-status-container">
+                            <div class="stock-status-description unknownstock">
+                                <div class="circle" aria-hidden="true">
+                                </div>
+                                <span data-test="UNKNOWNSTOCK" class="title-4 stock-status-stock">*</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container" style="width: 215px; margin: 0; display: contents;">
+                        <table class="product-table">
+                            <thead>
+                                <tr>
+                                    <th>SUPERMARKET</th>
+                                    <th>PRICE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sample Product Row -->
+                                <tr class="product-row" *ngFor="let price of product.prices">
+                                    <td>{{price.supermarket.name}}</td>
+                                    <td>{{price.value}}&nbsp;EGP</td>
+                                </tr>
+                                <!-- Add more product rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- </a> -->
+                <div class="card-actions"></div>
+            </div>
+        </div>
+    </li>
+</div>

@@ -1,0 +1,43 @@
+<div style="margin: 30px; text-align: -webkit-center;">
+    <h1 style="text-align: center;">Spinneys</h1>
+    <label for="htmlInput">Paste HTML Code here:&nbsp;</label>
+    <textarea id="htmlInput" [(ngModel)]="htmlInput" rows="10" cols="50"></textarea>
+  
+    <button class="styled-button" (click)="extractProducts()">Extract Products</button>
+    <div style="text-align: justify;">
+      <h1 style="color: red;">
+        Connect with Dtabase and add Data?
+      </h1>
+    </div>
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="isInsertChecked" (change)="handleToggle()">
+        <span class="slider round"></span>
+      </label>
+      <span class="switch-label">{{ isInsertChecked ? 'ON' : 'OFF' }}</span>
+    </div>
+    <div class="updateorinsert-switch" style="display: none; text-align: left;">
+      <h1 style="color: red;">
+        Insert or Update Data Into DB?
+      </h1>
+      <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" [(ngModel)]="isInsertorUpdateChecked">
+          <span class="slider round"></span>
+        </label>
+        <span class="switch-label">{{ isInsertorUpdateChecked ? 'INSERT' : 'UPDATE' }}</span>
+      </div>
+    </div>
+    <div style="display: flex;">
+      <div *ngIf="extractedProducts.length > 0" style="text-align: justify;">
+        <button (click)="copyToClipboard()">Copy Extracted Products to Clipboard</button>
+        <h3>Extracted Products:</h3>
+        <pre #divToCopy>{{ extractedProducts | json }}</pre>
+      </div>
+      <div *ngIf="urls.length > 0" style="text-align: justify;">
+        <button (click)="copyUrlsToClipboard()">Copy Extracted URLs to Clipboard</button>
+        <h3>Extracted URLs:</h3>
+        <pre #divUrlToCopy>{{ urls | json }}</pre>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 18 18">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-520.000000, -201.000000)" fill="#ffffff">
+            <g transform="translate(325.000000, 198.000000)">
+                <g transform="translate(195.000000, 3.000000)">
+                    <path d="M18,1.81285714 L16.1871429,0 L9,7.18714286 L1.81285714,0 L0,1.81285714 L7.18714286,9 L0,16.1871429 L1.81285714,18 L9,10.8128571 L16.1871429,18 L18,16.1871429 L10.8128571,9 L18,1.81285714 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
