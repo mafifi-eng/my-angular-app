@@ -25,6 +25,7 @@ import { TranslationService } from './services/translation-service.service';
 import { LoginComponent } from './login/login.component';
 import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     SearchResultComponent,
     ParserCarrefoureComponent,
     LoginComponent,
-    SpinneysParserComponent
+    SpinneysParserComponent,
+    SeoudiParserComponent
   ],
   imports: [
     BrowserModule,

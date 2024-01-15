@@ -14,6 +14,7 @@ import { ParserCarrefoureComponent } from './parser-carrefoure/parser-carrefoure
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
+import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 
 const routes: Routes = [
   {path: 'main', component: ProductComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'dashboard', component: AdminComponent },
   { path: 'ParserCarrefoure', component: ParserCarrefoureComponent },
   { path: 'SpinneysParser', component: SpinneysParserComponent },
+  { path: 'SeoudiParser', component: SeoudiParserComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 ];
 

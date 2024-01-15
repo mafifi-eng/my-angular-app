@@ -20,4 +20,8 @@ export class AdminComponent {
     this.router.navigate(['/SpinneysParser']);
   }
 
+  seoudiLinkHandler() {
+    this.router.navigate(['/SeoudiParser']);
+    }
+
 }
