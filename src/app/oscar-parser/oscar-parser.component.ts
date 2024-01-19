@@ -143,7 +143,7 @@ export class OscarParserComponent implements OnInit {
       'https://www.oscarstores.com/products/5637165024',
       'https://www.oscarstores.com/products/5637165034'
     ];
-    
+
     for (const url of urls) {
       try {
         const html = await this.getHtmlFromWeb(url);
@@ -174,9 +174,11 @@ export class OscarParserComponent implements OnInit {
   }
 
   private async getHtmlFromWeb(url: string): Promise<string> {
+    const requestData = { url };
+
+const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     try {
-      const data = await this.http.post<{ html: string }>('http://localhost:3000/scrape', { url }).toPromise();
-  
+      const data = await this.http.post<{ html: string }>('http://localhost:3000/scrape', requestData, { headers }).toPromise();
       // Check if data is not undefined before accessing its properties
       if (data !== undefined) {
         return data.html;
