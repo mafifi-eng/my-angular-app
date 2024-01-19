@@ -22,10 +22,14 @@ export class AdminComponent {
 
   seoudiLinkHandler() {
     this.router.navigate(['/SeoudiParser']);
-    }
+  }
 
-    metroLinkHandler() {
-      this.router.navigate(['/metroParser']);
-    }
+  metroLinkHandler() {
+    this.router.navigate(['/metroParser']);
+  }
+
+  oscarLinkHandler() {
+    this.router.navigate(['/oscarParser']);
+  }
 
 }

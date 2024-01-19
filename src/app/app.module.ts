@@ -28,6 +28,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 import { MetroParserComponent } from './metro-parser/metro-parser.component';
 import { ScraperService } from './services/scraper-service';
+import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ScraperService } from './services/scraper-service';
     LoginComponent,
     SpinneysParserComponent,
     SeoudiParserComponent,
-    MetroParserComponent
+    MetroParserComponent,
+    OscarParserComponent
   ],
   imports: [
     BrowserModule,

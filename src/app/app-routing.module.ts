@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
 import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 import { MetroParserComponent } from './metro-parser/metro-parser.component';
+import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 
 const routes: Routes = [
   {path: 'home', component: ProductComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'SpinneysParser', component: SpinneysParserComponent },
   { path: 'SeoudiParser', component: SeoudiParserComponent },
   { path: 'metroParser', component: MetroParserComponent },
+  { path: 'oscarParser', component: OscarParserComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 ];
 
