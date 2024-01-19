@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
 import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
+import { MetroParserComponent } from './metro-parser/metro-parser.component';
+import { ScraperService } from './services/scraper-service';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
     ParserCarrefoureComponent,
     LoginComponent,
     SpinneysParserComponent,
-    SeoudiParserComponent
+    SeoudiParserComponent,
+    MetroParserComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
     ReactiveFormsModule,
     ClipboardModule
   ],
-  providers: [ProductService, SubscriptionService, TranslationService], 
+  providers: [ProductService, SubscriptionService, TranslationService, ScraperService], 
   bootstrap: [MainComponent]
 })
 export class AppModule { }

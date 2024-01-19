@@ -24,4 +24,8 @@ export class AdminComponent {
     this.router.navigate(['/SeoudiParser']);
     }
 
+    metroLinkHandler() {
+      this.router.navigate(['/metroParser']);
+    }
+
 }

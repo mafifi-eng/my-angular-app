@@ -15,8 +15,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
 import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
+import { MetroParserComponent } from './metro-parser/metro-parser.component';
 
 const routes: Routes = [
+  {path: 'home', component: ProductComponent},
   {path: 'main', component: ProductComponent},
   {path: 'about', component: AboutComponent},
   {path: 'allrewards', component: AllrewardsComponent},
@@ -32,11 +34,12 @@ const routes: Routes = [
   { path: 'ParserCarrefoure', component: ParserCarrefoureComponent },
   { path: 'SpinneysParser', component: SpinneysParserComponent },
   { path: 'SeoudiParser', component: SeoudiParserComponent },
+  { path: 'metroParser', component: MetroParserComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

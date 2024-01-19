@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, Inject, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
 import { ProductService } from '../services/connection.service';
-import { Router } from '@angular/router';
+import { startWith, filter } from 'rxjs/operators';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Block } from '@angular/compiler';
 
@@ -81,5 +82,6 @@ export class MainComponent {
     const navLinks = document.querySelector('.nav-links') as HTMLElement;
     navLinks.classList.toggle('active');
     document.documentElement.scrollTop = 0;
-    this.router.navigate(['/admin']);    }
+    this.router.navigate(['/admin']);
+  }
 }

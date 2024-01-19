@@ -1,6 +1,6 @@
 // product.component.ts
 
-import { AfterViewInit, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ProductService } from '../services/connection.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -18,7 +18,7 @@ export class ProductComponent implements AfterViewInit {
   categoryName: any;
   errorMessage!: string;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,  private el: ElementRef) { }
 
   // ngOnInit(): void {
   //   this.getAllProducts();
@@ -28,6 +28,10 @@ export class ProductComponent implements AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       this.bgsections = document.querySelectorAll("section.mainbgsection") as NodeListOf<HTMLElement>;
 
+      const externalButton = document.querySelector('app-main #logolink') as HTMLButtonElement;
+      if (externalButton) {
+        externalButton.click();
+      }
       this.renderPage();
       document.addEventListener('DOMContentLoaded', () => {
 
