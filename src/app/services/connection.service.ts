@@ -1,7 +1,7 @@
 // product.service.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -19,24 +19,31 @@ export class ProductService {
   
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+  getAllProducts(page: number, pageSize: number): Observable<any[]> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', pageSize.toString());
+    return this.http.get<any[]>(`${this.apiUrl}`, { params });
   }
 
   updateSearchTerm(searchTerm: any){
     this.searchTerm = searchTerm;
   }
 
-  getProductsInCategory(productName: string): Observable<any[]> {
-    return this.  http.get<any[]>(`${this.apiUrl}/category/${productName}`);
+  getProductsInCategory(searchTerm: string, page: number, pageSize: number): Observable<any[]> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', pageSize.toString());
+    return this.  http.get<any[]>(`${this.apiUrl}/category/${searchTerm}`, { params });
   }
 
   getProductsByName(productName: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${productName}`);
   }
 
-  getRewards(): Observable<any> {
-    return this.http.get(`${this.apiUrl2}`);
+  getRewards(page: number, size: number): Observable<any> {
+    const url = `${this.apiUrl2}?page=${page}&size=${size}`;
+    return this.http.get(url);
   }
 
    // Method to emit an event and trigger a re-render

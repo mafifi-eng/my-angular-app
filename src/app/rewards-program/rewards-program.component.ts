@@ -9,11 +9,13 @@ import { ProductService } from '../services/connection.service';
 export class RewardsProgramComponent implements OnInit {
 
   products: any[] = [];
+  page: number = 0;
+  pageSize: number = 6;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.getRewards().subscribe(
+    this.productService.getRewards(this.page, this.pageSize).subscribe(
       (data: any) => {
         this.products = data;
       },

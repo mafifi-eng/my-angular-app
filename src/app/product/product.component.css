@@ -697,7 +697,14 @@ a.active {
     font-size: 1.41176rem;
     font-weight: 700;
     line-height: 28px;
-    letter-spacing: .3px
+    letter-spacing: .3px;
+}
+
+@media (min-width: 37.51em) {
+    .clickable--color-blue.clickable--theme-primary,
+    .clickable--color-blue.clickable--theme-tertiary {
+        margin-right: 15%;
+    }
 }
 
 @media (min-width: 37.51em) {
@@ -709,7 +716,8 @@ a.active {
         font-size: 1.64706rem;
         font-weight: 700;
         line-height: 34px;
-        letter-spacing: .4px
+        letter-spacing: .4px;
+        margin-right: 20%;
     }
 }
 
@@ -2126,7 +2134,13 @@ input[type=date]~label {
 
 @media (max-width: 71.24em) {
     .banner .banner__info {
-        margin: 6% 2% 6% 12%
+        margin: 6% 10% 6% 12%
+    }
+}
+
+@media (min-width: 48.01em) {
+    .banner .banner__info {
+        margin: 6% 10% 6% 12%
     }
 }
 
@@ -3903,7 +3917,10 @@ input[type=date]~label {
 @media (min-width: 48.01em) {
     .cms-layout>*+* {
         margin-top: 40px;
-        margin-left: 15%;
+        /* margin-left: 15%; */
+    }
+    .card-section.layout--size-auto.layout--padded {
+        margin-left: 10%;
     }
 }
 

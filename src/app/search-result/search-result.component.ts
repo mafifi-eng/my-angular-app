@@ -11,19 +11,22 @@ export class SearchResultComponent {
   errorMessage: string = '';
   categoryName: any = '';
   products: any[] = [];
+  pageSize: number = 10;
+  page: number = 0;
+  totalItems: number = 0;
   searchResult: any;
   private destroy$ = new Subject<void>();
   private inputSearch = document.getElementById('searchInput') as HTMLInputElement;
-  updateComponent: any =true;
+  updateComponent: any = true;
 
 
   constructor(private productService: ProductService, @Inject(PLATFORM_ID) private platformId: Object) {
     this.productService.rerender$
-    .pipe(takeUntil(this.destroy$))
-    .subscribe(() => {
-      this.searchResult = this.productService.searchTerm;
-      this.openSearchWindow();
-    });
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.searchResult = this.productService.searchTerm;
+        this.openSearchWindow();
+      });
   }
 
   ngAfterViewInit(): void {
@@ -49,29 +52,40 @@ export class SearchResultComponent {
   openSearchWindow(): void {
     document.querySelector('#nav-links')!.classList.remove('active');
     this.categoryName = this.searchResult;
+    this.page = 0;
     this.getProducts();
 
+  }
+
+  getAllProducts() {
+    this.productService.getAllProducts(this.page, this.pageSize).subscribe(
+      (allProducts) => {
+        if (this.page != 0)
+          this.products = this.products.concat(allProducts);
+        else
+          this.products = allProducts;
+      },
+      (error) => {
+        console.error('Error fetching all products:', error);
+      }
+    );
   }
 
   getProducts(): void {
 
     if (this.categoryName) {
-      this.productService.getProductsInCategory(this.categoryName).subscribe(
+      this.productService.getProductsInCategory(this.categoryName, this.page, this.pageSize).subscribe(
         (data) => {
           if (data.length === 0) {
             this.errorMessage = `No products found for category ${this.categoryName}. Displaying all products.`;
             // Fetch all products
-            this.productService.getAllProducts().subscribe(
-              (allProducts) => {
-                this.products = allProducts;
-              },
-              (error) => {
-                console.error('Error fetching all products:', error);
-              }
-            );
+            this.getAllProducts();
           } else {
             this.errorMessage = '';
-            this.products = data;
+            if (this.page != 0)
+              this.products = this.products.concat(data);
+            else
+              this.products = data;
           }
         },
         (error) => {
@@ -80,14 +94,12 @@ export class SearchResultComponent {
       );
     } else {
       // Fetch all products if no category is specified
-      this.productService.getAllProducts().subscribe(
-        (data) => {
-          this.products = data;
-        },
-        (error) => {
-          console.error('Error fetching all products:', error);
-        }
-      );
+      this.getAllProducts();
     }
+  }
+
+  onLoadMore() {
+    this.page++;
+    this.getProducts();
   }
 }

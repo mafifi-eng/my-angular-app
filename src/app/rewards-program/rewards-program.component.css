@@ -15324,3 +15324,9 @@ ul+.no-games-message {
         flex-wrap: wrap;
     }
   }
+
+  @media (min-width: 37.51em) {
+    .main-section{
+        margin-left: 100px
+    }
+  }
