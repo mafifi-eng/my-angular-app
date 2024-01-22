@@ -97,4 +97,10 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+.check-mark {
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+  
   
