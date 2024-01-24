@@ -5962,12 +5962,34 @@ margin-right: 5px;">
                                         <li class="menu-button">
                                           <a href="#home" style="color: black;">Home</a>
                                         </li>
-                                  
+                                  <!--Category with Submenu -->
+                  <li class="menu-button" class="dropdown">
+                    <!-- <div (click)="redirectsCategory()">Category</div> -->
+                    <a href="#home"(click)="categoryDeopdown()">Category</a>
+                    <div class="dropdown-content">
+                        <div (click)="redirectsToFreshFood()">Fresh Food</div>
+                        <div (click)="redirectsToFruitsAndVegetables()">Fruits & Vegetables</div>
+                        <div (click)="redirectsToFoodCupboard()">Food Cupboard</div>
+                        <div (click)="redirectsToBeverages()">Beverages</div>
+                        <div (click)="redirectsToBabyProducts()">Baby Products</div>
+                        <div (click)="redirectsToFrozenFood()">Frozen Food</div>
+                        <div (click)="redirectsToBioAndOrganicFood()">Bio & Organic Food</div>
+                        <div (click)="redirectsToBakery()">Bakery</div>
+                        <div (click)="redirectsToPetSupplies()">Pet Supplies</div>
+                        <div (click)="redirectsToElectronicsAndAppliances()">Electronics & Appliances</div>
+                        <div (click)="redirectsToSmartphonesTabletsAndWearables()">Smartphones, Tablets & Wearables</div>
+                        <div (click)="redirectsToBeautyAndPersonalCare()">Beauty & Personal Care</div>
+                        <div (click)="redirectsToHealthAndFitness()">Health & Fitness</div>
+                        <div (click)="redirectsToCleaningAndHousehold()">Cleaning & Household</div>
+                        <div (click)="redirectsToStationeryAndSchoolSupplies()">Stationery & School Supplies</div>
+                        <div (click)="redirectsToHomeAndGarden()">Home & Garden</div>
+                      </div>
+                  </li>
                                         <!-- About Category with Submenu -->
                                         <li class="menu-button">
                                           <div (click)="redirectsAbout()">About</div>
                                         </li>
-                                  
+
                                         <!-- Contact Category with Submenu -->
                                         <li class="menu-button">
                                           <div (click)="redirectsContact()">Contact</div>
@@ -6369,3 +6391,4 @@ margin-right: 5px;">
             id="">window.dataLayer = window.dataLayer || []; window.dataLayer.push({ originalLocation: document.location.protocol + "//" + document.location.hostname + document.location.pathname + document.location.search });</script>
     </div>
 </div>
+

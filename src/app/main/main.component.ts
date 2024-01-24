@@ -84,4 +84,122 @@ export class MainComponent {
     document.documentElement.scrollTop = 0;
     this.router.navigate(['/admin']);
   }
+  categoryDeopdown(){
+    const dropdown = document.querySelector('.dropdown') as HTMLElement;
+    document.addEventListener('click',(e)=>{
+      const dropdownContent = document.querySelector('.dropdown-content') as HTMLElement;
+      dropdownContent.style.display = 'block';
+    })
+  }
+
+    redirectsToFreshFood() {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/fresh-food']);    }
+
+    redirectsToFruitsAndVegetables(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/fruits-and-vegetables']);
+    }
+
+    redirectsToFoodCupboard(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/food-cupboard']);
+    }
+
+    redirectsToBeverages(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/beverages']);
+    }
+
+    redirectsToBabyProducts(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/baby-products']);
+    }
+
+    redirectsToFrozenFood(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/frozen-food']);
+    }
+
+    redirectsToBioAndOrganicFood(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/bio-and-organic-food']);
+    }
+
+    redirectsToBakery(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/bakery']);
+    }
+
+    redirectsToPetSupplies(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/pet-supplies']);
+    }
+
+    redirectsToElectronicsAndAppliances(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/electronics-and-appliances']);
+    }
+
+    redirectsToSmartphonesTabletsAndWearables(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/smartphones-tablets-and-wearables']);
+    }
+
+    redirectsToBeautyAndPersonalCare(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/beauty-and-personal-care']);
+    }
+
+    redirectsToHealthAndFitness(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/health-and-fitness']);
+    }
+
+    redirectsToCleaningAndHousehold(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/cleaning-and-household']);
+    }
+
+    redirectsToStationeryAndSchoolSupplies(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/stationery-and-school-supplies']);
+    }
+
+    redirectsToHomeAndGarden(): void {
+      const navLinks = document.querySelector('.nav-links') as HTMLElement;
+      navLinks.classList.toggle('active');
+      document.documentElement.scrollTop = 0;
+      this.router.navigate(['/home-and-garden']);
+    }
 }
