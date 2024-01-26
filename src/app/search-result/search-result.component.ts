@@ -1,6 +1,7 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ProductService } from '../services/connection.service';
 import { Subject, takeUntil } from 'rxjs';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-search-result',
@@ -20,7 +21,7 @@ export class SearchResultComponent {
   updateComponent: any = true;
 
 
-  constructor(private productService: ProductService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private productService: ProductService, private shoppingListService: ShoppingListService) {
     this.productService.rerender$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
@@ -101,5 +102,18 @@ export class SearchResultComponent {
   onLoadMore() {
     this.page++;
     this.getProducts();
+  }
+
+  addToBasket(event: Event, product: any, price: any) {
+    event.preventDefault();
+  
+    // Get the button element from the event
+    let buttonElement = event.currentTarget as HTMLElement;
+    buttonElement = buttonElement.querySelector(".add-to-basket-btn")!;
+  
+    // Update the button's style
+    buttonElement.style.backgroundColor = 'green';
+  
+    this.shoppingListService.addProduct(product, price);
   }
 }

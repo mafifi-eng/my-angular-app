@@ -29,6 +29,8 @@ import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 import { MetroParserComponent } from './metro-parser/metro-parser.component';
 import { ScraperService } from './services/scraper-service';
 import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
+import { ShoppingListService } from './services/shopping-list.service';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
     SpinneysParserComponent,
     SeoudiParserComponent,
     MetroParserComponent,
-    OscarParserComponent
+    OscarParserComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,7 @@ import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
     ReactiveFormsModule,
     ClipboardModule
   ],
-  providers: [ProductService, SubscriptionService, TranslationService, ScraperService], 
+  providers: [ProductService, SubscriptionService, TranslationService, ScraperService, ShoppingListService], 
   bootstrap: [MainComponent]
 })
 export class AppModule { }

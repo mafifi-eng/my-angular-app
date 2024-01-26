@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/connection.service';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-rewards-program',
@@ -12,7 +13,7 @@ export class RewardsProgramComponent implements OnInit {
   page: number = 0;
   pageSize: number = 6;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
     this.productService.getRewards(this.page, this.pageSize).subscribe(
@@ -24,4 +25,18 @@ export class RewardsProgramComponent implements OnInit {
       }
     );
   }
+
+addToBasket(event: Event, product: any, price: any) {
+  event.preventDefault();
+
+  // Get the button element from the event
+  let buttonElement = event.currentTarget as HTMLElement;
+  buttonElement = buttonElement.querySelector(".add-to-basket-btn")!;
+
+  // Update the button's style
+  buttonElement.style.backgroundColor = 'green';
+
+  this.shoppingListService.addProduct(product, price);
+}
+
 }

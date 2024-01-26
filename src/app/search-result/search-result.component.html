@@ -75,6 +75,7 @@
                                                         <tr>
                                                             <th>SUPERMARKET</th>
                                                             <th>PRICE</th>
+                                                            <th>Shopping List</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -83,6 +84,11 @@
                                                             *ngFor="let price of product.prices">
                                                             <td>{{price.supermarketName}}</td>
                                                             <td>{{price.value}}&nbsp;EGP</td>
+                                                            <td (click)="addToBasket($event, product, price)" style="pointer-events: auto;">
+                                                                <button class="add-to-basket-btn">
+                                                                    <img style="width: 35px;" src="../../assets/images/cart-plus-solid.svg" alt="Add to Basket"/> 
+                                                                </button>
+                                                            </td> 
                                                         </tr>
                                                         <!-- Add more product rows as needed -->
                                                     </tbody>

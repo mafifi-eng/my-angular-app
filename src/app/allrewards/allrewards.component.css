@@ -15998,3 +15998,18 @@ ul+.no-games-message {
         flex-wrap: wrap;
     }
 }
+
+.add-to-basket-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-basket-btn {
+    background-color: orange;
+    color: #fff;
+  }

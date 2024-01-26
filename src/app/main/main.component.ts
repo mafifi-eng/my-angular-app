@@ -4,6 +4,7 @@ import { startWith, filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Block } from '@angular/compiler';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-main',
@@ -12,12 +13,15 @@ import { Block } from '@angular/compiler';
 })
 export class MainComponent {
 
+  listCount: any = 0;
 
   constructor(private productService: ProductService, @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router, private renderer: Renderer2, private el: ElementRef) { }
+    private router: Router, private renderer: Renderer2, private el: ElementRef, private shoppingListService: ShoppingListService) { }
 
 
   ngAfterViewInit(): void {
+
+    this.listCount = this.shoppingListService.getProductList().length;
 
     document.addEventListener('DOMContentLoaded', () => {
       const mainDiv = this.el.nativeElement.querySelector('#mainContent');
