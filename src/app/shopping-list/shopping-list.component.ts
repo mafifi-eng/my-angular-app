@@ -35,6 +35,8 @@ export class ShoppingListComponent implements AfterViewInit {
       emptyDiv.style.display = "block";
       emptyBtn.style.display = "none";
     }
+    this.productService.customEvent.emit();
+
   }
 
   removeProduct(i: any) {
@@ -48,7 +50,7 @@ export class ShoppingListComponent implements AfterViewInit {
       emptyDiv.style.display = "block";
       emptyBtn.style.display = "none";
     }
-
+    this.productService.customEvent.emit();
   }
 
 }

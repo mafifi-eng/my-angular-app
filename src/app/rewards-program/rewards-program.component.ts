@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../services/connection.service';
 import { ShoppingListService } from '../services/shopping-list.service';
 
@@ -8,6 +8,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
   styleUrl: './rewards-program.component.css'
 })
 export class RewardsProgramComponent implements OnInit {
+  @Output() customEvent: EventEmitter<void> = new EventEmitter<void>();
 
   products: any[] = [];
   page: number = 0;
@@ -37,6 +38,7 @@ addToBasket(event: Event, product: any, price: any) {
   buttonElement.style.backgroundColor = 'green';
 
   this.shoppingListService.addProduct(product, price);
+  this.shoppingListService.customEvent.emit();
 }
 
 }

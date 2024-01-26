@@ -45,5 +45,6 @@ export class AllrewardsComponent implements OnInit {
     buttonElement.style.backgroundColor = 'green';
   
     this.shoppingListService.addProduct(product, price);
+    this.shoppingListService.customEvent.emit();
   }
 }
