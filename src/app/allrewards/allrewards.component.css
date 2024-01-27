@@ -16013,3 +16013,9 @@ ul+.no-games-message {
     background-color: orange;
     color: #fff;
   }
+
+  .red-border {
+    border-color: red;
+    border-width: 3px;
+    border-style: solid;
+  }

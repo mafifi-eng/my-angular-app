@@ -80,7 +80,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <!-- Sample Product Row -->
-                                                        <tr class="product-row"
+                                                        <tr [class.red-border]="price.isReward" class="product-row"
                                                             *ngFor="let price of product.prices">
                                                             <td>{{price.supermarketName}}</td>
                                                             <td>{{price.value}}&nbsp;EGP</td>
