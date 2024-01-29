@@ -23,8 +23,9 @@ export class MainComponent {
     this.shoppingListService.customEvent.subscribe(() => {
       this.listCount = this.shoppingListService.getProductList().length;
     });
-    this.listCount = this.shoppingListService.getProductList().length;
-
+    setTimeout(() => {
+      this.listCount = this.shoppingListService.getProductList().length;
+    });
     document.addEventListener('DOMContentLoaded', () => {
       const mainDiv = this.el.nativeElement.querySelector('#mainContent');
 

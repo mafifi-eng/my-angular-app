@@ -16015,7 +16015,6 @@ ul+.no-games-message {
 .container {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -16086,3 +16085,31 @@ ul+.no-games-message {
     border-width: 3px;
     border-style: solid;
   }
+
+  .green-border {
+    border: 3px solid green;
+  }
+  
+.legend {
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .legend-green {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    margin-right: 5px;
+    border: 1px solid #ccc; 
+  }
+  
+  .legend-red {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+  }
+  

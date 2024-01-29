@@ -28,6 +28,7 @@ export class AllrewardsComponent implements OnInit {
     this.productService.getRewards(this.page, this.pageSize).subscribe(
       (data: any) => {
         this.products = this.products.concat(data);
+        this.sortPricesAndAddBorders();
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -46,5 +47,20 @@ export class AllrewardsComponent implements OnInit {
   
     this.shoppingListService.addProduct(product, price);
     this.shoppingListService.customEvent.emit();
+  }
+
+  sortPricesAndAddBorders(): void {
+    this.products.forEach(product => {
+      // Sort prices in descending order
+      product.prices.sort((a: any, b: any) => b.value - a.value);
+  
+      // Find the lowest price
+      const lowestPrice = Math.min(...product.prices.map((price: any) => price.value));
+  
+      // Add a property to each price indicating if it's the lowest
+      product.prices.forEach((price: any) => {
+        price.isLowest = price.value === lowestPrice;
+      });
+    });
   }
 }

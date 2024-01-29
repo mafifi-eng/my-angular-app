@@ -15351,3 +15351,31 @@ ul+.no-games-message {
     border-width: 3px;
     border-style: solid;
   }
+
+.green-border {
+    border: 3px solid green;
+  }
+  
+.legend {
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .legend-green {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    margin-right: 5px;
+    border: 1px solid #ccc; 
+  }
+  
+  .legend-red {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+  }
+  
