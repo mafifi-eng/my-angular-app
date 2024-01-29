@@ -16040,6 +16040,15 @@ ul+.no-games-message {
 .product-row:hover {
     background-color: #f9f9f9;
 }
+@media only screen and (min-width: 769px) {
+    .grid-item.custom-styles {
+        margin-right: 110px;
+    }
+}
+
+.grid-item.custom-styles {
+    margin-right: auto;
+}
 
 @media only screen and (min-width: 769px) {
     .main-section{
@@ -16047,7 +16056,7 @@ ul+.no-games-message {
         display: flex;
         width: 100%;
         flex-wrap: wrap;
-        margin-left: 15%;
+        margin-left: 70px;
     }
     .custom-styles{
         width: 280px;

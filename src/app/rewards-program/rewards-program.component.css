@@ -15325,11 +15325,11 @@ ul+.no-games-message {
     }
   }
 
-  @media (min-width: 37.51em) {
+  /* @media (min-width: 37.51em) {
     .main-section{
         margin-left: 100px
     }
-  }
+  } */
 
   .add-to-basket-btn {
     padding: 10px 15px;
