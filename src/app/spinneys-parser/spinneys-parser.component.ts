@@ -38,6 +38,8 @@ interface Product {
 export class SpinneysParserComponent implements OnInit {
   @ViewChild('divToCopy', { static: false }) divToCopy!: ElementRef;
   @ViewChild('divUrlToCopy', { static: false }) divUrlToCopy!: ElementRef;
+  isTranslateChecked: any = false;
+  isDownloadChecked: any = false;
   
   ngOnInit(): void {
   }
@@ -74,8 +76,16 @@ export class SpinneysParserComponent implements OnInit {
         const imageUrl = element.find('img.ProductCard__Thumb').attr('src');
         const imageName = imageUrl ? this.getImageNameFromUrl(imageUrl) : '';
         extracteduUrls.push(imageUrl);
-        const nameTranslated = await this.translate(productName);
-        const categoryTranslated = await this.translate(productCategory);
+        let nameTranslated = '';
+        let categoryTranslated = `${productCategory}`;
+        if (this.isTranslateChecked) {
+          nameTranslated = await this.translate(productName);
+          categoryTranslated = await this.translate(productCategory);
+          categoryTranslated = `${productCategory} - ${categoryTranslated}`
+        }
+        if (this.isDownloadChecked) {
+          this.downloadImage(imageUrl);
+        }
 
         console.log('Raw Product:', productName, productCategory, productPrice);
         const prdct: Product = {
@@ -84,7 +94,7 @@ export class SpinneysParserComponent implements OnInit {
           "arabicName": `${nameTranslated}`,
           "category": {
             "id": null,
-            "name": `${productCategory} - ${categoryTranslated}`,
+            "name": `${categoryTranslated}`,
             "products": [{}]
           },
           "prices": [
@@ -221,5 +231,23 @@ export class SpinneysParserComponent implements OnInit {
   copyUrlsToClipboard() {
     const element = this.divUrlToCopy.nativeElement;
     this.clipboard.copy(element.innerText);
+  }
+
+  downloadImage(imageUrl: any) {
+    const baseUrl = 'http://localhost:4000';
+    const url = `${baseUrl}/download-image?imageUrl=${encodeURIComponent(imageUrl)}`;
+
+    this.http.get<any>(url).subscribe(
+      (response) => {
+        if (response.success) {
+          console.log("Image downloaded!")
+        } else {
+          console.error('Error downloading image:', response.error);
+        }
+      },
+      (error) => {
+        console.error('Error downloading image:', error);
+      }
+    );
   }
 }
