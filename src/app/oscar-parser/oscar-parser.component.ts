@@ -158,7 +158,7 @@ export class OscarParserComponent implements OnInit {
       try {
         const html = await this.getHtmlFromWeb(url);
         let pageIndex = await this.returnPageIndexHTML(html);
-        
+
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
@@ -180,13 +180,13 @@ export class OscarParserComponent implements OnInit {
 
   private getProductName(element: any): string {
     return element.find('h5.my-2.one-lines.ellipse.text-left.f_oswald.c_black.f-16.text-capitalize.f-w_bold')
-    .html()?.trim() || '';
+      .html()?.trim() || '';
   }
 
   private async getHtmlFromWeb(url: string): Promise<string> {
     const requestData = { url };
 
-const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     try {
       const data = await this.http.post<{ html: string }>('http://localhost:3000/scrape', requestData, { headers }).toPromise();
       // Check if data is not undefined before accessing its properties

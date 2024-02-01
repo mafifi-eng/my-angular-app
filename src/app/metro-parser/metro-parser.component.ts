@@ -42,7 +42,7 @@ export class MetroParserComponent implements OnInit {
 
   isTranslateChecked: any = false;
   isDownloadChecked: any = false;
-  
+
   ngOnInit(): void {
   }
   htmlInput: string = '';
@@ -161,13 +161,13 @@ export class MetroParserComponent implements OnInit {
     ];
     for (const url of urls) {
       try {
-        const html = await this.scraperService.scrapeWebsite(url).toPromise();
+        const html = await this.getHtmlFromWeb(url);
         let pageIndex = await this.returnPageIndexHTML(html);
 
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
-            const html = await this.scraperService.scrapeWebsite(parserUrl).toPromise();
+            const html = await this.getHtmlFromWeb(url);
             await this.parseHTML(html);
           } catch (error) {
             console.error('Error fetching or processing data:', error);
@@ -267,5 +267,23 @@ export class MetroParserComponent implements OnInit {
         console.error('Error downloading image:', error);
       }
     );
+  }
+
+  private async getHtmlFromWeb(url: string): Promise<string> {
+    const requestData = { url };
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    try {
+      const data = await this.http.post<{ html: string }>('http://localhost:3000/scrape', requestData, { headers }).toPromise();
+      // Check if data is not undefined before accessing its properties
+      if (data !== undefined) {
+        return data.html;
+      } else {
+        throw new Error('Response data is undefined');
+      }
+    } catch (error) {
+      console.error('Error scraping website:', error);
+      throw new Error('Failed to fetch HTML');
+    }
   }
 }
