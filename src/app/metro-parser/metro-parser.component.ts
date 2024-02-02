@@ -167,7 +167,7 @@ export class MetroParserComponent implements OnInit {
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
-            const html = await this.getHtmlFromWeb(url);
+            const html = await this.getHtmlFromWeb(parserUrl);
             await this.parseHTML(html);
           } catch (error) {
             console.error('Error fetching or processing data:', error);
