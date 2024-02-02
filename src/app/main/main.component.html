@@ -5963,9 +5963,9 @@ margin-right: 5px;">
                                           <a href="#home" style="color: black;">Home</a>
                                         </li>
                                   <!--Category with Submenu -->
-                  <li class="menu-button" class="dropdown">
+                  <li class="menu-button" class="dropdown" (click)="categoryDropdown($event)">
                     <!-- <div (click)="redirectsCategory()">Category</div> -->
-                    <a href="#home"(click)="categoryDeopdown()">Category</a>
+                    <div>Category</div>
                     <div class="dropdown-content">
                         <div (click)="redirectsToFreshFood()">Fresh Food</div>
                         <div (click)="redirectsToFruitsAndVegetables()">Fruits & Vegetables</div>

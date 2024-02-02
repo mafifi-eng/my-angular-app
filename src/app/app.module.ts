@@ -29,10 +29,25 @@ import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 import { MetroParserComponent } from './metro-parser/metro-parser.component';
 import { ScraperService } from './services/scraper-service';
 import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
-
+import { BabyProductsComponent } from './baby-products/baby-products.component';
+import { BakeryComponent } from './bakery/bakery.component';
+import { BeautyAndPersonalCareComponent } from './beauty-and-personal-care/beauty-and-personal-care.component';
+import { BeveragesComponent } from './beverages/beverages.component';
+import { BioAndOrganicFoodComponent } from './bio-and-organic-food/bio-and-organic-food.component';
+import { CleaningAndHouseholdComponent } from './cleaning-and-household/cleaning-and-household.component';
+import { ElectronicsAndAppliancesComponent } from './electronics-and-appliances/electronics-and-appliances.component';
+import { FoodCupboardComponent } from './food-cupboard/food-cupboard.component';
+import { FreshFoodComponent } from './fresh-food/fresh-food.component';
+import { FrozenFoodComponent } from './frozen-food/frozen-food.component';
+import { FruitsAndVegetablesComponent } from './fruits-and-vegetables/fruits-and-vegetables.component';
+import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitness.component';
+import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.component';
+import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
+import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
+import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
 
 @NgModule({
-  declarations: [   
+  declarations: [
     ProductComponent,
     AboutComponent,
     PrivacyPolicyComponent,
@@ -50,7 +65,23 @@ import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
     SpinneysParserComponent,
     SeoudiParserComponent,
     MetroParserComponent,
-    OscarParserComponent
+    OscarParserComponent,
+    BabyProductsComponent,
+    BakeryComponent,
+    BeautyAndPersonalCareComponent,
+    BeveragesComponent,
+    BioAndOrganicFoodComponent,
+    CleaningAndHouseholdComponent,
+    ElectronicsAndAppliancesComponent,
+    FoodCupboardComponent,
+    FreshFoodComponent,
+    FrozenFoodComponent,
+    FruitsAndVegetablesComponent,
+    HealthAndFitnessComponent,
+    HomeAndGardenComponent,
+    PetSuppliesComponent,
+    SmartphonesTabletsAndWearablesComponent,
+    StationeryAndSchoolSuppliesComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +92,7 @@ import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
     ReactiveFormsModule,
     ClipboardModule
   ],
-  providers: [ProductService, SubscriptionService, TranslationService, ScraperService], 
+  providers: [ProductService, SubscriptionService, TranslationService, ScraperService],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
