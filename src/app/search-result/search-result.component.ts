@@ -80,7 +80,7 @@ export class SearchResultComponent {
         this.productService.getProductsInCategory(this.categoryName, this.page, this.pageSize).subscribe(
           (data) => {
             if (data.length === 0) {
-              this.errorMessage = `No products found for category ${this.categoryName}. Displaying all products.`;
+              this.errorMessage = `No products found for ${this.categoryName}. Displaying all products.`;
               // Fetch all products
               this.getAllProducts();
             } else {
