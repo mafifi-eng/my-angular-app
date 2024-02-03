@@ -29,6 +29,7 @@ import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
 import { MetroParserComponent } from './metro-parser/metro-parser.component';
 import { ScraperService } from './services/scraper-service';
 import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
+<<<<<<< HEAD
 import { BabyProductsComponent } from './baby-products/baby-products.component';
 import { BakeryComponent } from './bakery/bakery.component';
 import { BeautyAndPersonalCareComponent } from './beauty-and-personal-care/beauty-and-personal-care.component';
@@ -45,6 +46,11 @@ import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.compon
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
+=======
+import { ShoppingListService } from './services/shopping-list.service';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+
+>>>>>>> 21fe7c592fcd7fda72692b5194bc228dacfa8eee
 
 @NgModule({
   declarations: [
@@ -66,6 +72,7 @@ import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-su
     SeoudiParserComponent,
     MetroParserComponent,
     OscarParserComponent,
+<<<<<<< HEAD
     BabyProductsComponent,
     BakeryComponent,
     BeautyAndPersonalCareComponent,
@@ -82,6 +89,9 @@ import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-su
     PetSuppliesComponent,
     SmartphonesTabletsAndWearablesComponent,
     StationeryAndSchoolSuppliesComponent
+=======
+    ShoppingListComponent
+>>>>>>> 21fe7c592fcd7fda72692b5194bc228dacfa8eee
   ],
   imports: [
     BrowserModule,
@@ -92,7 +102,11 @@ import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-su
     ReactiveFormsModule,
     ClipboardModule
   ],
+<<<<<<< HEAD
   providers: [ProductService, SubscriptionService, TranslationService, ScraperService],
+=======
+  providers: [ProductService, SubscriptionService, TranslationService, ScraperService, ShoppingListService], 
+>>>>>>> 21fe7c592fcd7fda72692b5194bc228dacfa8eee
   bootstrap: [MainComponent]
 })
 export class AppModule { }

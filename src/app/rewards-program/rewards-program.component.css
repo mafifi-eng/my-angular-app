@@ -15325,8 +15325,57 @@ ul+.no-games-message {
     }
   }
 
-  @media (min-width: 37.51em) {
+  /* @media (min-width: 37.51em) {
     .main-section{
         margin-left: 100px
     }
+  } */
+
+  .add-to-basket-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
   }
+  
+  .add-to-basket-btn {
+    background-color: orange;
+    color: #fff;
+  }
+
+  .red-border {
+    border-color: red;
+    border-width: 3px;
+    border-style: solid;
+  }
+
+.green-border {
+    border: 3px solid green;
+  }
+  
+.legend {
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .legend-green {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    margin-right: 5px;
+    border: 1px solid #ccc; 
+  }
+  
+  .legend-red {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+  }
+  

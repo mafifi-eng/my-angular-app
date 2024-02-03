@@ -90,6 +90,7 @@ export class ParserCarrefoureComponent implements OnInit {
           this.downloadImage(imageUrl);
         }
 
+        
         console.log('Raw Product:', productName, productCategory, productPrice);
         const prdct: Product = {
           "id": null,

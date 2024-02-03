@@ -33,6 +33,7 @@ import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.compon
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 const routes: Routes = [
   {path: 'home', component: ProductComponent},
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path: 'pet-supplies', component: PetSuppliesComponent },
   { path: 'smartphones-tablets-and-wearables', component: SmartphonesTabletsAndWearablesComponent },
   { path: 'stationery-and-school-supplies', component: StationeryAndSchoolSuppliesComponent },
+  { path: 'shoppingList', component: ShoppingListComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
 ];

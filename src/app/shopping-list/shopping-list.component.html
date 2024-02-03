@@ -1,0 +1,22 @@
+<!-- Shopping List Container -->
+<div class="shopping-list" style="margin-top: 90px;">
+    <!-- Shopping List Title -->
+    <div class="shopping-list-title" style="text-align: center;">My Shopping List</div>
+
+    <!-- Empty List Content -->
+    <div style="display: none;" class="empty-list-container">
+        <p class="empty-list-message">List is empty</p>
+    </div>
+
+    <button class="clear-button" (click)="clearProductList()">Clear List</button>
+    <!-- Shopping List Items -->
+    <div class="shopping-list-item" *ngFor="let product of productList; let i = index">
+        <div class="item-details">
+            <div class="item-name">{{product.englishName}}</div>
+            <div class="item-name" style="direction: rtl;">{{product.arabicName}}</div>
+            <div class="item-price">{{product.price}} EGP</div>
+            <div class="item-supermarket">{{product.supermarket}}</div>
+        </div>
+        <button (click)="removeProduct(i)">Remove</button>
+    </div>
+</div>

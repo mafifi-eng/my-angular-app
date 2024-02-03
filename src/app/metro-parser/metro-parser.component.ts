@@ -40,6 +40,8 @@ export class MetroParserComponent implements OnInit {
   @ViewChild('divToCopy', { static: false }) divToCopy!: ElementRef;
   @ViewChild('divUrlToCopy', { static: false }) divUrlToCopy!: ElementRef;
 
+  isTranslateChecked: any = false;
+  isDownloadChecked: any = false;
 
   ngOnInit(): void {
   }
@@ -73,8 +75,17 @@ export class MetroParserComponent implements OnInit {
         const imageUrl = element.find('.img-holder.lazy').attr('data-src');
         const imageName = imageUrl ? this.getImageNameFromUrl(imageUrl) : '';
         extracteduUrls.push(imageUrl);
-        const nameTranslated = await this.translate(productName);
-        const categoryTranslated = await this.translate(productCategory);
+
+        let nameTranslated = '';
+        let categoryTranslated = `${productCategory}`;
+        if (this.isTranslateChecked) {
+          nameTranslated = await this.translate(productName);
+          categoryTranslated = await this.translate(productCategory);
+          categoryTranslated = `${productCategory} - ${categoryTranslated}`
+        }
+        if (this.isDownloadChecked) {
+          this.downloadImage(imageUrl);
+        }
 
         console.log('Raw Product:', productName, productCategory, productPrice);
         const prdct: Product = {
@@ -83,7 +94,7 @@ export class MetroParserComponent implements OnInit {
           "arabicName": `${nameTranslated}`,
           "category": {
             "id": null,
-            "name": `${productCategory} - ${categoryTranslated}`,
+            "name": `${categoryTranslated}`,
             "products": [{}]
           },
           "prices": [
@@ -150,13 +161,13 @@ export class MetroParserComponent implements OnInit {
     ];
     for (const url of urls) {
       try {
-        const html = await this.scraperService.scrapeWebsite(url).toPromise();
+        const html = await this.getHtmlFromWeb(url);
         let pageIndex = await this.returnPageIndexHTML(html);
 
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
-            const html = await this.scraperService.scrapeWebsite(parserUrl).toPromise();
+            const html = await this.getHtmlFromWeb(parserUrl);
             await this.parseHTML(html);
           } catch (error) {
             console.error('Error fetching or processing data:', error);
@@ -238,5 +249,41 @@ export class MetroParserComponent implements OnInit {
   copyUrlsToClipboard() {
     const element = this.divUrlToCopy.nativeElement;
     this.clipboard.copy(element.innerText);
+  }
+
+  downloadImage(imageUrl: any) {
+    const baseUrl = 'http://localhost:4000';
+    const url = `${baseUrl}/download-image?imageUrl=${encodeURIComponent(imageUrl)}`;
+
+    this.http.get<any>(url).subscribe(
+      (response) => {
+        if (response.success) {
+          console.log("Image downloaded!")
+        } else {
+          console.error('Error downloading image:', response.error);
+        }
+      },
+      (error) => {
+        console.error('Error downloading image:', error);
+      }
+    );
+  }
+
+  private async getHtmlFromWeb(url: string): Promise<string> {
+    const requestData = { url };
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    try {
+      const data = await this.http.post<{ html: string }>('http://localhost:3000/scrape', requestData, { headers }).toPromise();
+      // Check if data is not undefined before accessing its properties
+      if (data !== undefined) {
+        return data.html;
+      } else {
+        throw new Error('Response data is undefined');
+      }
+    } catch (error) {
+      console.error('Error scraping website:', error);
+      throw new Error('Failed to fetch HTML');
+    }
   }
 }
