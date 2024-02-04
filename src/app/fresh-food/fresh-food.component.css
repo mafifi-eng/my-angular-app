@@ -16015,7 +16015,6 @@ ul+.no-games-message {
 .container {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -16042,25 +16041,87 @@ ul+.no-games-message {
   background-color: #f9f9f9;
 }
 
+@media (min-width: 37.51em) {
+  .grid-item.custom-styles {
+      margin-right: 110px;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .grid-item.custom-styles {
+      margin-right: auto;
+  }
+}
+
 @media only screen and (min-width: 769px) {
-  .main-section{
+  .main-section {
       height: 100%;
       display: flex;
       width: 100%;
       flex-wrap: wrap;
   }
-  .custom-styles{
+
+  .custom-styles {
       width: 280px;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .main-section{
+  .main-section {
       height: 100%;
       width: 100%;
       display: block;
   }
-  .custom-styles{
+
+  .custom-styles {
       width: auto;
   }
+}
+
+.add-to-basket-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.add-to-basket-btn {
+  background-color: orange;
+  color: #fff;
+}
+
+.red-border {
+  border-color: red;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.green-border {
+  border: 3px solid green;
+}
+
+.legend {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.legend-green {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: green;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+.legend-red {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  margin-right: 5px;
+  border: 1px solid #ccc;
 }

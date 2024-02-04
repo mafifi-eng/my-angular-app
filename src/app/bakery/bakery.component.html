@@ -1,5 +1,4 @@
-
-<div class="layout-container" style="padding: 50px; text-align: center;">
+<div class="layout-container" style="padding: 35px; text-align: center;">
   <div>
       <div class="layout search-detail-container layout--stack-small layout--gutters" style="display: block;">
           <div class="layout--size-full">
@@ -32,35 +31,30 @@
                   <ul class="grid grid--small-gutters main-section">
                       <li class="grid-item custom-styles" *ngFor="let product of products"
                           style="flex-grow: 0; flex-basis: auto;">
-                          <div class="card detail-card product-detail-card"
-                              style="min-width: 168px;">
-                              <span class="card-aspect-padding"
-                                  style="padding-top: 148.81%;"></span>
+                          <div class="card detail-card product-detail-card" style="min-width: 168px;">
+                              <span class="card-aspect-padding" style="padding-top: 148.81%;"></span>
                               <div class="card-content">
-                                  <div
-                                      class="clickable link detail-card-link clickable--size-inline">
+                                  <div class="clickable link detail-card-link clickable--size-inline">
                                       <!-- <a
-                                      class="clickable link detail-card-link clickable--size-inline"
-                                      data-test="productCardLink" href="/products/1062761"> -->
-                                      <div class="card-image" tabindex="-1"
-                                          data-test="cardImage">
-                                          <img
-                                              alt="{{product.name}}"
-                                              class="img loaded"
+                                          class="clickable link detail-card-link clickable--size-inline"
+                                          data-test="productCardLink" href="/products/1062761"> -->
+                                      <div class="card-image" tabindex="-1" data-test="cardImage">
+                                          <img alt="{{product.name}}" class="img loaded"
                                               src="../../assets/images/Products/{{product.coverImage}}">
                                       </div>
                                       <div class="card-body">
 
                                           <div class="pill-wrapper-hide"></div>
-                                          <h1 data-test="granulatedsugar" class="title-3 detail-card-description" style="margin-top: 25px;">
+                                          <h1 data-test="granulatedsugar" class="title-3 detail-card-description"
+                                              style="margin-top: 25px;">
                                               {{product.englishName}}
                                           </h1>
-                                          <h1 data-test="granulatedsugar" class="title-3 detail-card-description" style="margin-top: 25px;">
+                                          <h1 data-test="granulatedsugar" class="title-3 detail-card-description"
+                                              style="margin-top: 25px;">
                                               {{product.arabicName}}
                                           </h1>
                                           <div class="stock-status-container">
-                                              <div
-                                                  class="stock-status-description unknownstock">
+                                              <div class="stock-status-description unknownstock">
                                                   <div class="circle" aria-hidden="true">
                                                   </div>
                                                   <span data-test="UNKNOWNSTOCK"
@@ -68,7 +62,15 @@
                                               </div>
                                           </div>
                                       </div>
+                                       <!-- Legend for Green Border -->
+                                       <div class="legend">
+                                          <span class="legend-green"></span> Our Choice
+                                      </div>
 
+                                      <!-- Legend for Red Border -->
+                                      <div class="legend">
+                                          <span class="legend-red"></span> On Sale By Supermarket
+                                      </div>
 
                                       <div class="container">
                                           <table class="product-table">
@@ -76,14 +78,23 @@
                                                   <tr>
                                                       <th>SUPERMARKET</th>
                                                       <th>PRICE</th>
+                                                      <th>Shopping List</th>
                                                   </tr>
                                               </thead>
                                               <tbody>
                                                   <!-- Sample Product Row -->
-                                                  <tr class="product-row"
+                                                  <tr [class.green-border]="price.isLowest" [class.red-border]="price.isReward" class="product-row"
                                                       *ngFor="let price of product.prices">
                                                       <td>{{price.supermarketName}}</td>
                                                       <td>{{price.value}}&nbsp;EGP</td>
+                                                      <td (click)="addToBasket($event, product, price)"
+                                                          style="pointer-events: auto;">
+                                                          <button class="add-to-basket-btn">
+                                                              <img style="width: 35px;"
+                                                                  src="../../assets/images/cart-plus-solid.svg"
+                                                                  alt="Add to Basket" />
+                                                          </button>
+                                                      </td>
                                                   </tr>
                                                   <!-- Add more product rows as needed -->
                                               </tbody>
@@ -93,13 +104,13 @@
                                   </div>
                                   <!-- </a> -->
                                   <!-- <div class="card-actions"><button
-                                          data-test="addtolistButton" type="button"
-                                          class="clickable button add-to-list clickable--theme-secondary clickable--size-full clickable--color-blue clickable--animated clickable--bold-weight clickable--regular-font"><span
-                                              class="clickable-label">add to list</span> <img
-                                              aria-hidden="true"
-                                              src="/assets/icons/icon-plus-white.svg"
-                                              alt="plus-white description"
-                                              class="img icon loaded"></button></div> -->
+                                              data-test="addtolistButton" type="button"
+                                              class="clickable button add-to-list clickable--theme-secondary clickable--size-full clickable--color-blue clickable--animated clickable--bold-weight clickable--regular-font"><span
+                                                  class="clickable-label">add to list</span> <img
+                                                  aria-hidden="true"
+                                                  src="/assets/icons/icon-plus-white.svg"
+                                                  alt="plus-white description"
+                                                  class="img icon loaded"></button></div> -->
                               </div>
                           </div>
                       </li>
@@ -108,8 +119,7 @@
                           type="button"
                           class="clickable button clickable--theme-primary clickable--size-base clickable--color-blue clickable--animated clickable--bold-weight clickable--regular-font"><span
                               class="clickable-label">view more</span> <img aria-hidden="true"
-                              src="../../assets/images/icon-arrow-right-white.svg"
-                              alt="arrow-right-white description"
+                              src="../../assets/images/icon-arrow-right-white.svg" alt="arrow-right-white description"
                               class="img icon loaded"></button>
                   </div>
               </div>
@@ -117,4 +127,3 @@
       </div>
   </div>
 </div>
-

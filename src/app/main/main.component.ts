@@ -19,30 +19,78 @@ export class MainComponent {
     private router: Router, private renderer: Renderer2, private el: ElementRef, private shoppingListService: ShoppingListService) { }
 
 
+  // ngAfterViewInit(): void {
+  //   this.shoppingListService.customEvent.subscribe(() => {
+  //     this.listCount = this.shoppingListService.getProductList().length;
+  //   });
+  //   setTimeout(() => {
+  //     this.listCount = this.shoppingListService.getProductList().length;
+  //   });
+  //   document.addEventListener('DOMContentLoaded', () => {
+  //     const mainDiv = this.el.nativeElement.querySelector('#mainContent');
+
+  //     // Add a click event listener to the main div
+  //     this.renderer.listen(mainDiv, 'click', (event) => {
+  //       // Check if the clicked element is not one of the excluded divs
+  //       if (
+  //         event.target !== this.el.nativeElement.querySelector('#menu-ico') &&
+  //         event.target !== this.el.nativeElement.querySelector('#nav-links')
+  //       ) {
+  //         event.stopPropagation();
+  //         document.querySelector('#nav-links')!.classList.remove('active');
+  //       }
+  //     });
+
+  //   });
+  // }
+
+
+  // ngAfterViewInit(): void {
+  //   this.shoppingListService.customEvent.subscribe(() => {
+  //     this.listCount = this.shoppingListService.getProductList().length;
+  //   });
+  //   setTimeout(() => {
+  //     this.listCount = this.shoppingListService.getProductList().length;
+  //   });
+  //   document.addEventListener('DOMContentLoaded', () => {
+  //     const mainDiv = this.el.nativeElement.querySelector('#mainContent');
+  //     // Add a click event listener to the main div
+  //     this.renderer.listen(mainDiv, 'click', (event) => {
+  //       // Ensure that event.target is not null
+  //     const target = event.target as HTMLElement | null;
+  //     // Check if the clicked element is not one of the excluded elements
+  //     if (
+  //       !target?.closest('#menu-ico') &&
+  //       !target?.closest('#nav-links')
+  //     ){
+  //         event.stopPropagation();
+  //         document.querySelector('#nav-links')!.classList.remove('active');
+  //       }
+  //     });
+  //   });
+  // }
+
   ngAfterViewInit(): void {
     this.shoppingListService.customEvent.subscribe(() => {
       this.listCount = this.shoppingListService.getProductList().length;
     });
+
     setTimeout(() => {
       this.listCount = this.shoppingListService.getProductList().length;
     });
-    document.addEventListener('DOMContentLoaded', () => {
-      const mainDiv = this.el.nativeElement.querySelector('#mainContent');
 
-      // Add a click event listener to the main div
-      this.renderer.listen(mainDiv, 'click', (event) => {
-        // Check if the clicked element is not one of the excluded divs
-        if (
-          event.target !== this.el.nativeElement.querySelector('#menu-ico') &&
-          event.target !== this.el.nativeElement.querySelector('#nav-links')
-        ) {
-          event.stopPropagation();
-          document.querySelector('#nav-links')!.classList.remove('active');
-        }
-      });
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      const isMenuIcon = target.closest('#menu-ico');
+      const isNavLinks = target.closest('#nav-links');
 
+      if (!isMenuIcon && !isNavLinks) {
+        document.querySelector('#nav-links')?.classList.remove('active');
+      }
     });
   }
+
+
 
   handleSearchButtonClick(): void {
     const inputSearch = document.getElementById('searchInput') as HTMLInputElement;
@@ -91,14 +139,30 @@ export class MainComponent {
     document.documentElement.scrollTop = 0;
     this.router.navigate(['/admin']);
   }
-  categoryDeopdown() {
-    const dropdown = document.querySelector('.dropdown') as HTMLElement;
-    document.addEventListener('click', (e) => {
-      const dropdownContent = document.querySelector('.dropdown-content') as HTMLElement;
-      dropdownContent.style.display = 'block';
-    })
+  // categoryDropdown() {
+  //   const dropdown = document.querySelector('.dropdown') as HTMLElement;
+  //   document.addEventListener('click', (e) => {
+  //     const dropdownContent = document.querySelector('.dropdown-content') as HTMLElement;
+  //     dropdownContent.style.display = 'block';
+  //   })
+  // }
+
+  categoryDropdown(event: Event) {
+    const dropdown = this.el.nativeElement.querySelector('.dropdown');
+    dropdown.classList.toggle('active');
+
+    // Stop the event from propagating to avoid immediate closing
+    event.stopPropagation();
   }
 
+  @HostListener('document:click', ['$event'])
+  closeDropdown(event: Event) {
+    const dropdown = this.el.nativeElement.querySelector('.dropdown');
+    if (!dropdown.contains(event.target as Node)) {
+      // Close the dropdown if the click is outside of it
+      dropdown.classList.remove('active');
+    }
+  }
   redirectsToFreshFood() {
     const navLinks = document.querySelector('.nav-links') as HTMLElement;
     navLinks.classList.toggle('active');

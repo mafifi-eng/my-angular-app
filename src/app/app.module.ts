@@ -31,10 +31,26 @@ import { ScraperService } from './services/scraper-service';
 import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 import { ShoppingListService } from './services/shopping-list.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { BabyProductsComponent } from './baby-products/baby-products.component';
+import { BakeryComponent } from './bakery/bakery.component';
+import { BeautyAndPersonalCareComponent } from './beauty-and-personal-care/beauty-and-personal-care.component';
+import { BeveragesComponent } from './beverages/beverages.component';
+import { BioAndOrganicFoodComponent } from './bio-and-organic-food/bio-and-organic-food.component';
+import { CleaningAndHouseholdComponent } from './cleaning-and-household/cleaning-and-household.component';
+import { ElectronicsAndAppliancesComponent } from './electronics-and-appliances/electronics-and-appliances.component';
+import { FoodCupboardComponent } from './food-cupboard/food-cupboard.component';
+import { FreshFoodComponent } from './fresh-food/fresh-food.component';
+import { FrozenFoodComponent } from './frozen-food/frozen-food.component';
+import { FruitsAndVegetablesComponent } from './fruits-and-vegetables/fruits-and-vegetables.component';
+import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitness.component';
+import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.component';
+import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
+import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
+import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
 
 
 @NgModule({
-  declarations: [   
+  declarations: [
     ProductComponent,
     AboutComponent,
     PrivacyPolicyComponent,
@@ -53,7 +69,23 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     SeoudiParserComponent,
     MetroParserComponent,
     OscarParserComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    BabyProductsComponent,
+    BakeryComponent,
+    BeautyAndPersonalCareComponent,
+    BeveragesComponent,
+    BioAndOrganicFoodComponent,
+    CleaningAndHouseholdComponent,
+    ElectronicsAndAppliancesComponent,
+    FoodCupboardComponent,
+    FreshFoodComponent,
+    FrozenFoodComponent,
+    FruitsAndVegetablesComponent,
+    HealthAndFitnessComponent,
+    HomeAndGardenComponent,
+    PetSuppliesComponent,
+    SmartphonesTabletsAndWearablesComponent,
+    StationeryAndSchoolSuppliesComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +96,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     ReactiveFormsModule,
     ClipboardModule
   ],
-  providers: [ProductService, SubscriptionService, TranslationService, ScraperService, ShoppingListService], 
+  providers: [ProductService, SubscriptionService, TranslationService, ScraperService, ShoppingListService],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
