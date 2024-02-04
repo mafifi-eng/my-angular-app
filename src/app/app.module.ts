@@ -47,6 +47,8 @@ import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.compon
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
+import { WeeklyadComponent } from './weeklyad/weeklyad.component';
+
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-su
     PetSuppliesComponent,
     SmartphonesTabletsAndWearablesComponent,
     StationeryAndSchoolSuppliesComponent,
+    WeeklyadComponent
   ],
   imports: [
     BrowserModule,

@@ -5941,10 +5941,11 @@ margin-right: 5px;">
                                 <ul class="actions-inner">
                                     <li class="search-input-container search-bar-mobile" style="display: flex;">
                                         <input (keydown)="onInputEnter($event)" aria-label="search-bar search products and recipes"
-                                            data-test="search-bar" type="text" placeholder="search products"
+                                            data-test="search-bar" type="text" [(ngModel)]="inputSearch" placeholder="search products"
                                             style="flex: 1;" id="searchInput"
                                             class="clickable button search-input clickable--theme-flat clickable--size-auto clickable--bold-weight clickable--regular-font">
-                                        <button id="searchEnter" class="highlight-button" (click)="handleSearchButtonClick()">
+                                            <span *ngIf="inputSearch" class="clear-icon" (click)="clearSearch($event)">✕</span>
+                                            <button id="searchEnter" class="highlight-button" (click)="handleSearchButtonClick()">
                                         <img aria-hidden="true"
                                             src="assets/images/icon-search-icon.svg" alt="search-icon description"
                                             class="img icon loaded">
@@ -6017,11 +6018,11 @@ margin-right: 5px;">
                     <footer class="layout sitemap layout--stack-medium layout--gutters"><a href="#footer"
                             class="skip-link footer-skip-link">Skip to footer</a>
                         <div class="linkgroup quick-links">
-                            <h4 aria-label="quick links" tabindex="0" class="headline linkgroup-title">quick links</h4>
+                            <h4 aria-label="quick links" tabindex="0" class="headline linkgroup-title">Quick Links</h4>
                             <div class="linkgroup-body"><a class="clickable link clickable--size-inline"
                                     data-test="home"></a>
-                                <a class="clickable link clickable--size-inline" data-test="weekly-ad" href="/flyer"
-                                    style="font-size: x-large;">view
+                                <a routerLink="/weeklyad" class="clickable link clickable--size-inline" data-test="weekly-ad" href="/flyer"
+                                    style="font-size: x-large;">View
                                     weekly ad</a>
                             </div>
                         </div>
@@ -6029,7 +6030,7 @@ margin-right: 5px;">
                             <h4 aria-label="about " style="font-size: medium;" tabindex="0"
                                 class="headline linkgroup-title">About Yoma</h4>
                             <div class="linkgroup-body"><a class="clickable link clickable--size-inline"
-                                    style="font-size: x-large;" data-test="history" [routerLink]="'/about'">About us</a>
+                                    style="font-size: x-large;" data-test="history" [routerLink]="'/about'">About Us</a>
                             </div>
                         </div>
                     </footer>
@@ -6058,15 +6059,15 @@ margin-right: 5px;">
                                             data-test="mobile-apps" href="/play-mylidl">learn more</a></div>
                                 </div> -->
                                     <div class="linkgroup legal">
-                                        <h4 aria-label="legal" tabindex="0" class="headline linkgroup-title">legal</h4>
+                                        <h4 aria-label="legal" tabindex="0" class="headline linkgroup-title">Legal</h4>
                                         <div class="linkgroup-body">
                                             <!-- <button id="ot-sdk-btn"
                                                 class="ot-sdk-show-settings a link menu-link">cookie settings</button> -->
                                             <a class="clickable link menu-link clickable--size-inline"
-                                                data-test="privacy-policy" [routerLink]="'/privacy-policy'">privacy
-                                                policy</a>
+                                                data-test="privacy-policy" [routerLink]="'/privacy-policy'">Privacy
+                                                Policy</a>
                                             <a class="clickable link menu-link clickable--size-inline"
-                                                data-test="terms-of-use" [routerLink]="'/terms-of-use'">terms of use</a>
+                                                data-test="terms-of-use" [routerLink]="'/terms-of-use'">Terms Of Use</a>
 
                                         </div>
                                     </div>
