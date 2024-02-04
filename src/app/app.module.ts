@@ -31,6 +31,7 @@ import { ScraperService } from './services/scraper-service';
 import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 import { ShoppingListService } from './services/shopping-list.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { WeeklyadComponent } from './weeklyad/weeklyad.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     SeoudiParserComponent,
     MetroParserComponent,
     OscarParserComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    WeeklyadComponent
   ],
   imports: [
     BrowserModule,

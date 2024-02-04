@@ -34,6 +34,7 @@ import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { WeeklyadComponent } from './weeklyad/weeklyad.component';
 
 const routes: Routes = [
   {path: 'home', component: ProductComponent},
@@ -71,6 +72,7 @@ const routes: Routes = [
   { path: 'smartphones-tablets-and-wearables', component: SmartphonesTabletsAndWearablesComponent },
   { path: 'stationery-and-school-supplies', component: StationeryAndSchoolSuppliesComponent },
   { path: 'shoppingList', component: ShoppingListComponent },
+  { path: 'weeklyad', component: WeeklyadComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
 ];
