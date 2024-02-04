@@ -16143,4 +16143,24 @@ ul+.no-games-message {
     background-color: #11111194;
   }
 
+  @media (min-width: 37.51em){
+  .clear-icon {
+    position: relative;
+    top: 0%;
+    right: 28px;
+    transform: translateY(30%);
+    cursor: pointer;
+    color: #666;
+  }
+}
 
+@media (max-width: 37.51em){
+    .clear-icon {
+        position: relative;
+        top: 0%;
+        right: 28px;
+        transform: translateY(10%);
+        cursor: pointer;
+        color: #666;
+      }
+}

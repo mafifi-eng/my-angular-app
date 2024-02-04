@@ -14,7 +14,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 export class MainComponent {
 
   listCount: any = 0;
-
+  inputSearch: any = '';
   constructor(private productService: ProductService, @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router, private renderer: Renderer2, private el: ElementRef, private shoppingListService: ShoppingListService) { }
 
@@ -42,11 +42,14 @@ export class MainComponent {
       });
 
     });
+
+    // this.inputSearch = localStorage.getItem('searchInput');
   }
 
   handleSearchButtonClick(): void {
-    const inputSearch = document.getElementById('searchInput') as HTMLInputElement;
-    this.productService.searchTerm = (inputSearch.value.trim());
+    // this.inputSearch = document.getElementById('searchInput') as HTMLInputElement;
+    // localStorage.setItem('searchTerm', JSON.stringify(this.inputSearch));
+    this.productService.searchTerm = (this.inputSearch);
     this.router.navigate(['/search-page']);
     this.productService.triggerRerender();
 
@@ -64,8 +67,9 @@ export class MainComponent {
 
   onInputEnter(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      const inputSearch = document.getElementById('searchInput') as HTMLInputElement;
-      this.productService.searchTerm = (inputSearch.value.trim());
+      // this.inputSearch = document.getElementById('searchInput') as HTMLInputElement;
+      // localStorage.setItem('searchTerm', JSON.stringify(this.inputSearch));
+      this.productService.searchTerm = (this.inputSearch);
       this.router.navigate(['/search-page']);
       this.productService.triggerRerender();
     }
@@ -209,5 +213,12 @@ export class MainComponent {
     navLinks.classList.toggle('active');
     document.documentElement.scrollTop = 0;
     this.router.navigate(['/home-and-garden']);
+  }
+
+  clearSearch(event: Event) {
+    event.preventDefault();
+    this.inputSearch = '';
+    const input = document.getElementById('searchInput') as HTMLInputElement;
+    input.focus();
   }
 }

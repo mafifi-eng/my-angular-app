@@ -5941,10 +5941,11 @@ margin-right: 5px;">
                                 <ul class="actions-inner">
                                     <li class="search-input-container search-bar-mobile" style="display: flex;">
                                         <input (keydown)="onInputEnter($event)" aria-label="search-bar search products and recipes"
-                                            data-test="search-bar" type="text" placeholder="search products"
+                                            data-test="search-bar" type="text" [(ngModel)]="inputSearch" placeholder="search products"
                                             style="flex: 1;" id="searchInput"
                                             class="clickable button search-input clickable--theme-flat clickable--size-auto clickable--bold-weight clickable--regular-font">
-                                        <button id="searchEnter" class="highlight-button" (click)="handleSearchButtonClick()">
+                                            <span *ngIf="inputSearch" class="clear-icon" (click)="clearSearch($event)">✕</span>
+                                            <button id="searchEnter" class="highlight-button" (click)="handleSearchButtonClick()">
                                         <img aria-hidden="true"
                                             src="assets/images/icon-search-icon.svg" alt="search-icon description"
                                             class="img icon loaded">
