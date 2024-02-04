@@ -37,6 +37,13 @@ export class ProductService {
     return this.  http.get<any[]>(`${this.apiUrl}/category/${searchTerm}`, { params });
   }
 
+  getProductsBySearch(searchTerm: string, page: number, pageSize: number): Observable<any[]> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', pageSize.toString());
+    return this.  http.get<any[]>(`${this.apiUrl}/search/${searchTerm}`, { params });
+  }
+
   getProductsByName(productName: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${productName}`);
   }
