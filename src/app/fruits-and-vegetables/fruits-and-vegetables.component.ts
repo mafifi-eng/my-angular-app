@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class FruitsAndVegetablesComponent {
   errorMessage: string = '';
-  categoryName: string = 'fruits-and-vegetables';
+  categoryName: string = 'Fruits ,Vegetables &amp Herbs';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

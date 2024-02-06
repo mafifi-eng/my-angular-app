@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BioAndOrganicFoodComponent {
   errorMessage: string = '';
-  categoryName: string = 'bio-and-organic-food';
+  categoryName: string = 'Bio &amp Organic Food';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

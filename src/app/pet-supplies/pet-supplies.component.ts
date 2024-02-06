@@ -11,7 +11,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class PetSuppliesComponent {
   errorMessage: string = '';
-  categoryName: string = 'pet-supplies';
+  categoryName: string = 'Pet Supplies';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

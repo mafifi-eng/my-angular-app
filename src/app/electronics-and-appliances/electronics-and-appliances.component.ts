@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class ElectronicsAndAppliancesComponent {
   errorMessage: string = '';
-  categoryName: string = 'electronics-and-appliances';
+  categoryName: string = 'Electronics &amp Appliances';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;
@@ -36,7 +36,7 @@ export class ElectronicsAndAppliancesComponent {
         else
           this.products = allProducts;
 
-          this.sortPricesAndAddBorders();
+        this.sortPricesAndAddBorders();
       },
       (error) => {
         console.error('Error fetching all products:', error);
@@ -60,7 +60,7 @@ export class ElectronicsAndAppliancesComponent {
               else
                 this.products = data;
 
-                this.sortPricesAndAddBorders();
+              this.sortPricesAndAddBorders();
 
             }
           },

@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BakeryComponent {
   errorMessage: string = '';
-  categoryName: string = 'bakery';
+  categoryName: string = 'Bakery &amp Pastry';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

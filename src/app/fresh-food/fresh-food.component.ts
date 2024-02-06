@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class FreshFoodComponent {
   errorMessage: string = '';
-  categoryName: string = 'fresh-food';
+  categoryName: string = 'Fresh';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

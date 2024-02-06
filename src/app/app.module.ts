@@ -43,10 +43,8 @@ import { FreshFoodComponent } from './fresh-food/fresh-food.component';
 import { FrozenFoodComponent } from './frozen-food/frozen-food.component';
 import { FruitsAndVegetablesComponent } from './fruits-and-vegetables/fruits-and-vegetables.component';
 import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitness.component';
-import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.component';
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
-import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
 
 
@@ -84,10 +82,8 @@ import { WeeklyadComponent } from './weeklyad/weeklyad.component';
     FrozenFoodComponent,
     FruitsAndVegetablesComponent,
     HealthAndFitnessComponent,
-    HomeAndGardenComponent,
     PetSuppliesComponent,
     SmartphonesTabletsAndWearablesComponent,
-    StationeryAndSchoolSuppliesComponent,
     WeeklyadComponent
   ],
   imports: [

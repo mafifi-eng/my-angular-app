@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class HealthAndFitnessComponent {
   errorMessage: string = '';
-  categoryName: string = 'health-and-fitness';
+  categoryName: string = 'Health &amp Fitness';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

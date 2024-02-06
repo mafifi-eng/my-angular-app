@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BabyProductsComponent {
   errorMessage: string = '';
-  categoryName: string = 'baby-products';
+  categoryName: string = 'Baby Products';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

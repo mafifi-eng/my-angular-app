@@ -29,10 +29,8 @@ import { FreshFoodComponent } from './fresh-food/fresh-food.component';
 import { FrozenFoodComponent } from './frozen-food/frozen-food.component';
 import { FruitsAndVegetablesComponent } from './fruits-and-vegetables/fruits-and-vegetables.component';
 import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitness.component';
-import { HomeAndGardenComponent } from './home-and-garden/home-and-garden.component';
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
-import { StationeryAndSchoolSuppliesComponent } from './stationery-and-school-supplies/stationery-and-school-supplies.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
 
@@ -67,10 +65,8 @@ const routes: Routes = [
   { path: 'frozen-food', component: FrozenFoodComponent },
   { path: 'fruits-and-vegetables', component: FruitsAndVegetablesComponent },
   { path: 'health-and-fitness', component: HealthAndFitnessComponent },
-  { path: 'home-and-garden', component: HomeAndGardenComponent },
   { path: 'pet-supplies', component: PetSuppliesComponent },
   { path: 'smartphones-tablets-and-wearables', component: SmartphonesTabletsAndWearablesComponent },
-  { path: 'stationery-and-school-supplies', component: StationeryAndSchoolSuppliesComponent },
   { path: 'shoppingList', component: ShoppingListComponent },
   { path: 'weeklyad', component: WeeklyadComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },

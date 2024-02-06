@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class SmartphonesTabletsAndWearablesComponent {
   errorMessage: string = '';
-  categoryName: string = 'smartphones-tablets-and-wearables';
+  categoryName: string = 'Smartphones, Tablets &amp Wearables';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;
