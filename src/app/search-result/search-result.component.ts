@@ -77,7 +77,7 @@ export class SearchResultComponent {
   async getProducts(): Promise<void> {
     try {
       if (this.categoryName) {
-        this.productService.getProductsInCategory(this.categoryName, this.page, this.pageSize).subscribe(
+        this.productService.getProductsBySearch(this.categoryName, this.page, this.pageSize).subscribe(
           (data) => {
             if (data.length === 0) {
               this.errorMessage = `No products found for ${this.categoryName}. Displaying all products.`;
