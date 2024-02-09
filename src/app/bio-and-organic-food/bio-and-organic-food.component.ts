@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ProductService } from '../services/connection.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ShoppingListService } from '../services/shopping-list.service';
@@ -14,18 +14,22 @@ export class BioAndOrganicFoodComponent {
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;
-  totalItems: number = 0;
-  searchResult: any;
+  loading: boolean = true;
   private destroy$ = new Subject<void>();
-  private inputSearch = document.getElementById('searchInput') as HTMLInputElement;
   updateComponent: any = true;
 
   constructor(private productService: ProductService, private shoppingListService: ShoppingListService) {
     this.productService.rerender$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.searchResult = this.productService.searchTerm;
-      });
+  }
+
+  ngOnInit() {
+    this.getProducts();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getAllProducts() {
@@ -46,34 +50,29 @@ export class BioAndOrganicFoodComponent {
 
   async getProducts(): Promise<void> {
     try {
+      this.loading = true; // Set loading to true when fetching starts
+
       if (this.categoryName) {
-        this.productService.getProductsInCategory(this.categoryName, this.page, this.pageSize).subscribe(
-          (data) => {
-            if (data.length === 0) {
-              this.errorMessage = `No products found for ${this.categoryName}. Displaying all products.`;
-              // Fetch all products
-              this.getAllProducts();
-            } else {
-              this.errorMessage = '';
-              if (this.page != 0)
-                this.products = this.products.concat(data);
-              else
-                this.products = data;
+        const data = await this.productService.getProductsInCategory(this.categoryName, this.page, this.pageSize).toPromise();
 
-                this.sortPricesAndAddBorders();
-
-            }
-          },
-          (error) => {
-            console.error('Error fetching products by category:', error);
+        if (data && data.length > 0) {
+          if (this.page !== 0) {
+            this.products = this.products.concat(data);
+          } else {
+            this.products = data;
           }
-        );
+          this.sortPricesAndAddBorders();
+        } else {
+          this.errorMessage = `No products found for ${this.categoryName}. Displaying all products.`;
+          await this.getAllProducts();
+        }
       } else {
-        // Fetch all products if no category is specified
-        this.getAllProducts();
+        await this.getAllProducts();
       }
     } catch (error) {
-      console.log(error);
+      console.error('Error fetching products:', error);
+    } finally {
+      this.loading = false; // Set loading to false when fetching is complete
     }
   }
 

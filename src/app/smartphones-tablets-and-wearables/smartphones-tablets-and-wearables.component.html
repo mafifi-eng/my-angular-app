@@ -1,30 +1,12 @@
+<div *ngIf="loading" style="display: flex; justify-content:center; align-items:center;">
+  <img alt="Yoma logo description" src="../../assets/images/yoma.jpg" style="max-width: 60%;">
+</div>
 <div class="layout-container" style="padding: 35px; text-align: center;">
   <div>
+    <div class="category-title">
+      <h2><a href="#home" style="text-decoration: none;">Home</a> /   {{ categoryName }}</h2>
+    </div>
       <div class="layout search-detail-container layout--stack-small layout--gutters" style="display: block;">
-          <div class="layout--size-full">
-              <div class="header-divider">
-                  <div tabindex="0">
-                      <h3 data-test="searchresults" class="title-3 divider-title">search
-                          results
-                      </h3>
-                  </div>
-              </div>
-          </div>
-          <div class="category-filter__sidebar layout--size-small" style="text-align-last: center;">
-              <div class="sticky-outer-wrapper">
-                  <div class="sticky-inner-wrapper" style="position: relative; top: 0px;">
-                      <div class="category-filter__wrapper">
-                          <div class="category-filter__container">
-                              <h3 class="title-3 category-filter__title">{{this.searchResult}}
-                              </h3>
-                              <a href="#list" class="skip-link category-skip-link">Skip to
-                                  search
-                                  results</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
           <div id="list" class="layout--size-auto">
               <div style="color: red;">{{this.errorMessage}}</div>
               <div class="pagination-grid">
@@ -35,9 +17,6 @@
                               <span class="card-aspect-padding" style="padding-top: 148.81%;"></span>
                               <div class="card-content">
                                   <div class="clickable link detail-card-link clickable--size-inline">
-                                      <!-- <a
-                                          class="clickable link detail-card-link clickable--size-inline"
-                                          data-test="productCardLink" href="/products/1062761"> -->
                                       <div class="card-image" tabindex="-1" data-test="cardImage">
                                           <img alt="{{product.name}}" class="img loaded"
                                               src="../../assets/images/Products/{{product.coverImage}}">
@@ -96,21 +75,11 @@
                                                           </button>
                                                       </td>
                                                   </tr>
-                                                  <!-- Add more product rows as needed -->
                                               </tbody>
                                           </table>
                                       </div>
 
                                   </div>
-                                  <!-- </a> -->
-                                  <!-- <div class="card-actions"><button
-                                              data-test="addtolistButton" type="button"
-                                              class="clickable button add-to-list clickable--theme-secondary clickable--size-full clickable--color-blue clickable--animated clickable--bold-weight clickable--regular-font"><span
-                                                  class="clickable-label">add to list</span> <img
-                                                  aria-hidden="true"
-                                                  src="/assets/icons/icon-plus-white.svg"
-                                                  alt="plus-white description"
-                                                  class="img icon loaded"></button></div> -->
                               </div>
                           </div>
                       </li>
