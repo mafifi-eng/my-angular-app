@@ -279,6 +279,13 @@ export class MainComponent {
     this.router.navigate(['/home-and-garden']);
   }
 
+  redirectsToCleaning() {
+    const navLinks = document.querySelector('.nav-links') as HTMLElement;
+    navLinks.classList.toggle('active');
+    document.documentElement.scrollTop = 0;
+    this.router.navigate(['/cleaning-and-household']);
+  }
+
   clearSearch(event: Event) {
     event.preventDefault();
     this.inputSearch = '';

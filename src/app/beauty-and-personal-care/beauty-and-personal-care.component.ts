@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BeautyAndPersonalCareComponent {
   errorMessage: string = '';
-  categoryName: string = 'Beauty &amp Personal Care';
+  categoryName: string = 'Beauty & Personal Care - الجمال والعناية الشخصية';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

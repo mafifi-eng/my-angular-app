@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class CleaningAndHouseholdComponent {
   errorMessage: string = '';
-  categoryName: string = 'Cleaning &amp Household';
+  categoryName: string = 'Cleaning & Household - التنظيف والمنزلية';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

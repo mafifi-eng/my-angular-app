@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BabyProductsComponent implements OnInit {
   errorMessage: string = '';
-  categoryName: string = 'Baby Products';
+  categoryName: string = 'Baby Products - منتجات الأطفال';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

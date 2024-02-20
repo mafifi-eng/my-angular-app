@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class FruitsAndVegetablesComponent {
   errorMessage: string = '';
-  categoryName: string = 'Fruits ,Vegetables &amp Herbs';
+  categoryName: string = 'Fruits & Vegetables - فواكه خضار';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

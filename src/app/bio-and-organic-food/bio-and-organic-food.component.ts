@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class BioAndOrganicFoodComponent {
   errorMessage: string = '';
-  categoryName: string = 'Bio &amp Organic Food';
+  categoryName: string = 'Bio Organic Food - الأغذية الحيوية والعضوية';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

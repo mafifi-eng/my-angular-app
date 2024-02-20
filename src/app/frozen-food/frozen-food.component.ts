@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class FrozenFoodComponent {
   errorMessage: string = '';
-  categoryName: string = 'Frozen Food';
+  categoryName: string = 'Frozen Food - أغذية مجمدة';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;

@@ -10,7 +10,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class FoodCupboardComponent {
   errorMessage: string = '';
-  categoryName: string = 'Food Cupboard';
+  categoryName: string = 'Food Cupboard - خزانة الطعام';
   products: any[] = [];
   pageSize: number = 10;
   page: number = 0;
