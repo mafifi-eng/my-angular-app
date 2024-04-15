@@ -46,6 +46,7 @@ import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitne
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
+import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-admin/update-all-super-market-admin.component';
 
 
 
@@ -84,7 +85,8 @@ import { WeeklyadComponent } from './weeklyad/weeklyad.component';
     HealthAndFitnessComponent,
     PetSuppliesComponent,
     SmartphonesTabletsAndWearablesComponent,
-    WeeklyadComponent
+    WeeklyadComponent,
+    UpdateAllSuperMarketAdminComponent
   ],
   imports: [
     BrowserModule,

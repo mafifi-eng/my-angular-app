@@ -44,7 +44,6 @@ export class ParserCarrefoureComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  htmlInput: string = '';
   extractedProducts: Product[] = [];
   isInsertChecked: boolean = true;
   isInsertorUpdateChecked: boolean = false;
@@ -56,10 +55,33 @@ export class ParserCarrefoureComponent implements OnInit {
     const myButton = document.querySelector('.styled-button') as HTMLButtonElement;
     myButton.disabled = true;
     myButton.classList.add('disabled-link');
-    const products: Product[] = [];
-    const $ = cheerio.load(this.htmlInput);
-    const extracteduUrls: any[] = [];
+    
+    const urls = [
+      'https://www.carrefouregypt.com/mafegy/en/c/FEGY1700000'
+    ];
 
+    for (const url of urls) {
+
+      try {
+        const html = await this.getHtmlFromWeb(url);
+        await this.parseHTML(html);
+      } catch (error) {
+        console.error('Error fetching or processing data:', error);
+      }
+      finally {
+        // Re-enable the button after the operation is completed (success or failure)
+        // myButton.disabled = false;
+        // myButton.classList.remove('disabled-link');
+      }
+    }
+
+
+  }
+
+  async parseHTML(html: string): Promise<void> {
+    const $ = cheerio.load(html);
+    const products: Product[] = [];
+    const extracteduUrls: any[] = [];
     // Log the number of product elements found
     console.log('Number of Products:', $('div[data-testid="product_card_image_container"]').length);
 
@@ -81,6 +103,7 @@ export class ParserCarrefoureComponent implements OnInit {
         extracteduUrls.push(imageUrl);
         let nameTranslated = '';
         let categoryTranslated = `${productCategory}`;
+
         if (this.isTranslateChecked) {
           nameTranslated = await this.translate(productName);
           categoryTranslated = await this.translate(productCategory);
@@ -90,7 +113,7 @@ export class ParserCarrefoureComponent implements OnInit {
           this.downloadImage(imageUrl);
         }
 
-        
+
         console.log('Raw Product:', productName, productCategory, productPrice);
         const prdct: Product = {
           "id": null,
@@ -129,6 +152,21 @@ export class ParserCarrefoureComponent implements OnInit {
     this.extractedProducts = products;
     this.urls = extracteduUrls;
   }
+
+  private async getHtmlFromWeb(url: string): Promise<string> {
+    try {
+      const data = await this.http.get<{ html: string }>('http://localhost:3000/scrapeCarrefour', { params: { url } }).toPromise();
+      // Check if data is not undefined before accessing its properties
+      if (data !== undefined) {
+        return data.html;
+      } else {
+        throw new Error('Response data is undefined');
+      }
+    } catch (error) {
+      console.error('Error scraping website:', error);
+      throw new Error('Failed to fetch HTML');
+    }
+  }  
 
   private getProductName(element: any): string {
     return element.find('a[data-testid="product_name"]').html()?.trim() || '';

@@ -53,7 +53,7 @@ export class OscarParserComponent implements OnInit {
   constructor(private translationService: TranslationService,
     private http: HttpClient, private clipboard: Clipboard, private scraperService: ScraperService) { }
 
-  async parseHTML(html: string): Promise<void> {
+  async parseHTMLOscar(html: string): Promise<void> {
     const $ = cheerio.load(html);
     const products: Product[] = [];
     const extracteduUrls: any[] = [];
@@ -68,7 +68,7 @@ export class OscarParserComponent implements OnInit {
       const element = $('.row.w-100 .col-md-3.col-sm-4.col-6.p-1').eq(index);
 
       try {
-        const productName = this.getProductName(element);
+        const productName = this.getProductNameOscar(element);
         const productPrice = element.find('span.c_red.f-15').html()!.trim().match(/(\d+(\.\d+)?)/)![1] || '';
         const isRewardsProgram = element.find('span.c_green.f-12').html()?.trim() || '';
         const imageUrl = element.find('img.card-img-top').attr('src');
@@ -126,13 +126,13 @@ export class OscarParserComponent implements OnInit {
     }
   }
 
-  async returnPageIndexHTML(html: string): Promise<string> {
+  async returnPageIndexHTMLOscar(html: string): Promise<string> {
     const $ = cheerio.load(html);
     const pageItem = $('.pagination a.page-link').eq(-2).html()?.trim() || '';
     return pageItem;
   }
 
-  async extractProducts(): Promise<void> {
+  async extractProductsOscar(): Promise<void> {
     const myButton = document.querySelector('.styled-button') as HTMLButtonElement;
     let pageIndex: string;
     myButton.disabled = true;
@@ -156,14 +156,14 @@ export class OscarParserComponent implements OnInit {
 
     for (const url of urls) {
       try {
-        const html = await this.getHtmlFromWeb(url);
-        let pageIndex = await this.returnPageIndexHTML(html);
+        const html = await this.getHtmlFromWebOscarMetro(url);
+        let pageIndex = await this.returnPageIndexHTMLOscar(html);
 
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
-            const html = await this.getHtmlFromWeb(parserUrl);
-            await this.parseHTML(html);
+            const html = await this.getHtmlFromWebOscarMetro(parserUrl);
+            await this.parseHTMLOscar(html);
           } catch (error) {
             console.error('Error fetching or processing data:', error);
           }
@@ -178,12 +178,12 @@ export class OscarParserComponent implements OnInit {
     }
   }
 
-  private getProductName(element: any): string {
+  private getProductNameOscar(element: any): string {
     return element.find('h5.my-2.one-lines.ellipse.text-left.f_oswald.c_black.f-16.text-capitalize.f-w_bold')
       .html()?.trim() || '';
   }
 
-  private async getHtmlFromWeb(url: string): Promise<string> {
+  private async getHtmlFromWebOscarMetro(url: string): Promise<string> {
     const requestData = { url };
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

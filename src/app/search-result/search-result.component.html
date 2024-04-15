@@ -62,8 +62,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                         <!-- Legend for Green Border -->
-                                         <div class="legend">
+                                        <!-- Legend for Green Border -->
+                                        <div class="legend">
                                             <span class="legend-green"></span> Our Choice
                                         </div>
 
@@ -76,6 +76,7 @@
                                             <table class="product-table">
                                                 <thead>
                                                     <tr>
+                                                        <th style="border: none;"></th>
                                                         <th>SUPERMARKET</th>
                                                         <th>PRICE</th>
                                                         <th>Shopping List</th>
@@ -83,8 +84,30 @@
                                                 </thead>
                                                 <tbody>
                                                     <!-- Sample Product Row -->
-                                                    <tr [class.green-border]="price.isLowest" [class.red-border]="price.isReward" class="product-row"
+                                                    <tr [class.green-border]="price.isLowest"
+                                                        [class.red-border]="price.isReward" class="product-row"
                                                         *ngFor="let price of product.prices">
+                                                        <td>
+                                                            <!-- Conditionally render the logo based on the supermarket name -->
+                                                            <ng-container *ngIf="price.supermarketName === 'Carrefour Egypt'">
+                                                                <img class="supermarket-logo" src="../../assets/images/carrefour.jpeg" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                            <ng-container *ngIf="price.supermarketName === 'Oscar Markets'">
+                                                                <img class="supermarket-logo"  src="../../assets/images/oscar-logo.webp" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                            <ng-container *ngIf="price.supermarketName === 'Seoudi Supermarket'">
+                                                                <img class="supermarket-logo"  src="../../assets/images/seoudi-logo.jpeg" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                            <ng-container *ngIf="price.supermarketName === 'Spinneys Egypt'">
+                                                                <img class="supermarket-logo"  src="../../assets/images/spinneys-logo.png" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                            <ng-container *ngIf="price.supermarketName === 'Kheir Zaman - خير زمان'">
+                                                                <img class="supermarket-logo"  src="../../assets/images/KheirZaman-logo.png" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                            <ng-container *ngIf="price.supermarketName === 'Metro Markets'">
+                                                                <img class="supermarket-logo"  src="../../assets/images/Metro-logo.png" alt="Carrefour Logo" />
+                                                            </ng-container>
+                                                        </td>
                                                         <td>{{price.supermarketName}}</td>
                                                         <td>{{price.value}}&nbsp;EGP</td>
                                                         <td (click)="addToBasket($event, product, price)"
@@ -100,7 +123,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
                                     </div>
                                     <!-- </a> -->
                                     <!-- <div class="card-actions"><button

@@ -41,9 +41,9 @@ export class SeoudiParserComponent implements OnInit {
   isTranslateChecked: any = false;
   isDownloadChecked: any = false;
 
+
   ngOnInit(): void {
   }
-  htmlInput: string = '';
   extractedProducts: Product[] = [];
   isInsertChecked: boolean = true;
   isInsertorUpdateChecked: boolean = false;
@@ -51,12 +51,35 @@ export class SeoudiParserComponent implements OnInit {
 
   constructor(private translationService: TranslationService, private http: HttpClient, private clipboard: Clipboard) { }
 
-  async extractProducts(): Promise<void> {
+  async extractProductsSeoudi(): Promise<void> {
     const myButton = document.querySelector('.styled-button') as HTMLButtonElement;
     myButton.disabled = true;
     myButton.classList.add('disabled-link');
+
+    const urls = [
+      'https://seoudisupermarket.com/en/fruits-vegetables-2'
+    ];
+
+    for (const url of urls) {
+
+      try {
+        const html = await this.getHtmlFromWebSeoudi(url);
+        await this.parseHTMLSeoudi(html);
+      } catch (error) {
+        console.error('Error fetching or processing data:', error);
+      }
+      finally {
+        // Re-enable the button after the operation is completed (success or failure)
+        // myButton.disabled = false;
+        // myButton.classList.remove('disabled-link');
+      }
+    }
+
+  }
+
+  async parseHTMLSeoudi(html: string): Promise<void> {
+    const $ = cheerio.load(html);
     const products: Product[] = [];
-    const $ = cheerio.load(this.htmlInput);
     const extracteduUrls: any[] = [];
 
     // Log the number of product elements found
@@ -69,7 +92,7 @@ export class SeoudiParserComponent implements OnInit {
       const element = $('article.ProductCard').eq(index);
 
       try {
-        const productName = this.getProductName(element);
+        const productName = this.getProductNameSeoudi(element);
         const productPrice = element.find('span.font-bold').html()?.trim().substring(0, element.find('span.font-bold').html()?.trim().lastIndexOf(' ')) || '';
         const isRewardsProgram = element.find('span.ProductCard__BadgeLabel.ProductCard__BadgeLabel--discount').html()?.trim() || '';
         const imageUrl = element.find('img').attr('src');
@@ -82,37 +105,38 @@ export class SeoudiParserComponent implements OnInit {
           categoryTranslated = await this.translate(productCategory);
           categoryTranslated = `${productCategory} - ${categoryTranslated}`
         }
-        if (this.isDownloadChecked) {
-          this.downloadImage(imageUrl);
-        }
 
-        console.log('Raw Product:', productName, productCategory, productPrice);
-        const prdct: Product = {
-          "id": null,
-          "englishName": (`${productName}` != '')? `${productName}`: null,
-          "arabicName": `${nameTranslated}`,
-          "category": {
+        if (this.isDownloadChecked) 
+          this.downloadImage(imageUrl);
+
+          console.log('Raw Product:', productName, productCategory, productPrice);
+          const prdct: Product = {
             "id": null,
-            "name": `${categoryTranslated}`,
-            "products": [{}]
-          },
-          "prices": [
-            {
+            "englishName": (`${productName}` != '') ? `${productName}` : null,
+            "arabicName": `${nameTranslated}`,
+            "category": {
               "id": null,
-              "value": parseFloat(productPrice.trim()),
-              "product": null,
-              "supermarket": {
-                "id": 3,
-                "name": "Seoudi Supermarket",
-                "prices": [{}]
-              },
-              "isRewardsProgram": (isRewardsProgram != ''),
-            }
-          ],
-          "coverImage": `${imageName}`
-        };
-        if (prdct.englishName != null)
-          products.push(prdct);
+              "name": `${categoryTranslated}`,
+              "products": [{}]
+            },
+            "prices": [
+              {
+                "id": null,
+                "value": parseFloat(productPrice.trim()),
+                "product": null,
+                "supermarket": {
+                  "id": 3,
+                  "name": "Seoudi Supermarket",
+                  "prices": [{}]
+                },
+                "isRewardsProgram": (isRewardsProgram != ''),
+              }
+            ],
+            "coverImage": `${imageName}`
+          };
+          if (prdct.englishName != null)
+            products.push(prdct);
+        
       } catch (error) {
         console.error('Error processing product:', error);
       }
@@ -125,13 +149,30 @@ export class SeoudiParserComponent implements OnInit {
     this.urls = extracteduUrls;
   }
 
-  private getProductName(element: any): string {
+
+
+  private async getHtmlFromWebSeoudi(url: string): Promise<string> {
+    try {
+      const data = await this.http.get<{ html: string }>('http://localhost:3000/scrapeSeoudi', { params: { url } }).toPromise();
+      // Check if data is not undefined before accessing its properties
+      if (data != undefined) {
+        return data.html;
+      } else {
+        throw new Error('Response data is undefined');
+      }
+    } catch (error) {
+      console.error('Error scraping website:', error);
+      throw new Error('Failed to fetch HTML');
+    }
+  }
+
+  private getProductNameSeoudi(element: any): string {
     return element.find('a.ProductCard__Name').html()?.trim() || '';
   }
 
   async translate(originalText: string,): Promise<any> {
-    const targetLanguage = 'ar'; 
-    const sourceLang = 'en'; 
+    const targetLanguage = 'ar';
+    const sourceLang = 'en';
 
     try {
       const result = await firstValueFrom(this.translationService.translateText(originalText, targetLanguage, sourceLang));
@@ -213,3 +254,4 @@ export class SeoudiParserComponent implements OnInit {
     );
   }
 }
+

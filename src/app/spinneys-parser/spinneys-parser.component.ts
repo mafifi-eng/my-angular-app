@@ -40,10 +40,10 @@ export class SpinneysParserComponent implements OnInit {
   @ViewChild('divUrlToCopy', { static: false }) divUrlToCopy!: ElementRef;
   isTranslateChecked: any = false;
   isDownloadChecked: any = false;
-  
+
+
   ngOnInit(): void {
   }
-  htmlInput: string = '';
   extractedProducts: Product[] = [];
   isInsertChecked: boolean = true;
   isInsertorUpdateChecked: boolean = false;
@@ -51,26 +51,53 @@ export class SpinneysParserComponent implements OnInit {
 
   constructor(private translationService: TranslationService, private http: HttpClient, private clipboard: Clipboard) { }
 
-  async extractProducts(): Promise<void> {
+  async extractProductsSpinneys(): Promise<void> {
     const myButton = document.querySelector('.styled-button') as HTMLButtonElement;
     myButton.disabled = true;
     myButton.classList.add('disabled-link');
+
+    const urls = [
+      'https://spinneys-egypt.com/en/category/fruits-vegetables',
+      'https://spinneys-egypt.com/en/category/meat-poultry'
+    ];
+
+    for (const url of urls) {
+
+      try {
+        const html = await this.getHtmlFromWebSpinneys(url);
+        await this.parseHTMLSpinneys(html);
+      } catch (error) {
+        console.error('Error fetching or processing data:', error);
+      }
+      finally {
+        // Re-enable the button after the operation is completed (success or failure)
+        // myButton.disabled = false;
+        // myButton.classList.remove('disabled-link');
+      }
+    }
+  }
+
+  private getProductNameSpinneys(element: any): string {
+    return element.find('p.product-name.text-base.text-black').html()?.trim() || '';
+  }
+
+  async parseHTMLSpinneys(html: string): Promise<void> {
+    const $ = cheerio.load(html);
     const products: Product[] = [];
-    const $ = cheerio.load(this.htmlInput);
     const extracteduUrls: any[] = [];
 
     // Log the number of product elements found
     console.log('Number of Products:', $('article.ProductCard.bg-white.border.border-secondary-300.rounded-2xs.overflow-hidden.ProductCard--is-groceries').length);
 
     let productCategory: any = $("h1.mt-4.md\\:mt-8.text-xl.md\\:text-4xl.text-black.font-light.antialiased").html()?.trim() || '';
-    productCategory = this.extractTextFromStrong(productCategory);
+    productCategory = this.extractTextFromStrongSpinneys(productCategory);
 
     for (let index = 0; index < $('article.ProductCard.bg-white.border.border-secondary-300.rounded-2xs.overflow-hidden.ProductCard--is-groceries').length; index++) {
       console.log(`Processing Product ${index + 1}`);
       const element = $('article.ProductCard.bg-white.border.border-secondary-300.rounded-2xs.overflow-hidden.ProductCard--is-groceries').eq(index);
 
       try {
-        const productName = this.getProductName(element);
+        const productName = this.getProductNameSpinneys(element);
         const productPrice = element.find('div.flex.items-center span.font-bold').html()?.trim().substring(0, element.find('div.flex.items-center span.font-bold').html()?.trim().lastIndexOf(' ')) || '';
         const isRewardsProgram = element.find('span.PriceBefore.text-gray-700.font-light').html()?.trim() || '';
         const imageUrl = element.find('img.ProductCard__Thumb').attr('src');
@@ -90,7 +117,7 @@ export class SpinneysParserComponent implements OnInit {
         console.log('Raw Product:', productName, productCategory, productPrice);
         const prdct: Product = {
           "id": null,
-          "englishName": (`${productName}` != '')? `${productName}`: null,
+          "englishName": (`${productName}` != '') ? `${productName}` : null,
           "arabicName": `${nameTranslated}`,
           "category": {
             "id": null,
@@ -113,7 +140,7 @@ export class SpinneysParserComponent implements OnInit {
           "coverImage": `${imageName}`
         };
         if (prdct.englishName != null)
-        products.push(prdct);
+          products.push(prdct);
       } catch (error) {
         console.error('Error processing product:', error);
       }
@@ -126,44 +153,22 @@ export class SpinneysParserComponent implements OnInit {
     this.urls = extracteduUrls;
   }
 
-  private getProductName(element: any): string {
-    return element.find('p.product-name.text-base.text-black').html()?.trim() || '';
-  }
-
-  async translate(originalText: string,): Promise<any> {
-    const sourceLang = 'en'; 
-    const targetLanguage = 'ar'; 
-
-
+  private async getHtmlFromWebSpinneys(url: string): Promise<string> {
     try {
-      const result = await firstValueFrom(this.translationService.translateText(originalText, targetLanguage, sourceLang));
-      return result;
+      const data = await this.http.get<{ html: string }>('http://localhost:3000/scrapeSpinneys', { params: { url } }).toPromise();
+      // Check if data is not undefined before accessing its properties
+      if (data !== undefined) {
+        return data.html;
+      } else {
+        throw new Error('Response data is undefined');
+      }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error scraping website:', error);
+      throw new Error('Failed to fetch HTML');
     }
-
   }
 
-  async getTranslation(text: any) {
-    const translated = await this.translate(text);
-    return translated;
-  }
-
-  getImageNameFromUrl(url: string) {
-    const parts = url.split('/');
-    const imageNameWithExtension = parts[parts.length - 1].split('?')[0];
-    const extensionIndex = imageNameWithExtension.lastIndexOf('.');
-
-    // Check if the image ends with ".jpg"
-    return imageNameWithExtension;
-
-    // else {
-    //   const imageNameWithoutSize = imageNameWithExtension.replace('_1700Wx1700H', '');
-    //   return imageNameWithoutSize;
-    // }
-  }
-
-  extractTextFromStrong(htmlString: string): string | null {
+  extractTextFromStrongSpinneys(htmlString: string): string | null {
     // Create a temporary element
     const tempElement = document.createElement('div');
 
@@ -197,6 +202,39 @@ export class SpinneysParserComponent implements OnInit {
       // Return null if <strong> element is not found
       return null;
     }
+  }
+  
+  async translate(originalText: string,): Promise<any> {
+    const sourceLang = 'en';
+    const targetLanguage = 'ar';
+
+
+    try {
+      const result = await firstValueFrom(this.translationService.translateText(originalText, targetLanguage, sourceLang));
+      return result;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+  }
+
+  async getTranslation(text: any) {
+    const translated = await this.translate(text);
+    return translated;
+  }
+
+  getImageNameFromUrl(url: string) {
+    const parts = url.split('/');
+    const imageNameWithExtension = parts[parts.length - 1].split('?')[0];
+    const extensionIndex = imageNameWithExtension.lastIndexOf('.');
+
+    // Check if the image ends with ".jpg"
+    return imageNameWithExtension;
+
+    // else {
+    //   const imageNameWithoutSize = imageNameWithExtension.replace('_1700Wx1700H', '');
+    //   return imageNameWithoutSize;
+    // }
   }
 
   addProduct(product: any) {

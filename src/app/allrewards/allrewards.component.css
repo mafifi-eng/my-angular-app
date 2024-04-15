@@ -16027,6 +16027,7 @@ ul+.no-games-message {
 .legend {
     margin-top: 10px;
     text-align: left;
+    display: flex;
   }
   
   .legend-green {

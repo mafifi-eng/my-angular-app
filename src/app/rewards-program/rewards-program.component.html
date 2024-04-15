@@ -46,6 +46,7 @@
                         <table class="product-table">
                             <thead>
                                 <tr>
+                                    <th style="border: none;"></th>
                                     <th>SUPERMARKET</th>
                                     <th>PRICE</th>
                                     <th>Shopping List</th>
@@ -55,6 +56,27 @@
                                 <!-- Sample Product Row -->
                                 <tr [class.green-border]="price.isLowest" [class.red-border]="price.isRewardsProgram"
                                     class="product-row" *ngFor="let price of product.prices">
+                                    <td>
+                                        <!-- Conditionally render the logo based on the supermarket name -->
+                                        <ng-container *ngIf="price.supermarket.name === 'Carrefour Egypt'">
+                                            <img class="supermarket-logo" src="../../assets/images/carrefour.jpeg" alt="Carrefour Logo" />
+                                        </ng-container>
+                                        <ng-container *ngIf="price.supermarket.name === 'Oscar Markets'">
+                                            <img class="supermarket-logo"  src="../../assets/images/oscar-logo.webp" alt="Carrefour Logo" />
+                                        </ng-container>
+                                        <ng-container *ngIf="price.supermarket.name === 'Seoudi Supermarket'">
+                                            <img class="supermarket-logo"  src="../../assets/images/seoudi-logo.jpeg" alt="Carrefour Logo" />
+                                        </ng-container>
+                                        <ng-container *ngIf="price.supermarket.name === 'Spinneys Egypt'">
+                                            <img class="supermarket-logo"  src="../../assets/images/spinneys-logo.png" alt="Carrefour Logo" />
+                                        </ng-container>
+                                        <ng-container *ngIf="price.supermarket.name === 'Kheir Zaman - خير زمان'">
+                                            <img class="supermarket-logo"  src="../../assets/images/KheirZaman-logo.png" alt="Carrefour Logo" />
+                                        </ng-container>
+                                        <ng-container *ngIf="price.supermarket.name === 'Metro Markets'">
+                                            <img class="supermarket-logo"  src="../../assets/images/Metro-logo.png" alt="Carrefour Logo" />
+                                        </ng-container>
+                                    </td>
                                     <td>{{price.supermarket.name}}</td>
                                     <td>{{price.value}}&nbsp;EGP</td>
                                     <td (click)="addToBasket($event, product, price)" style="pointer-events: auto;">
@@ -67,10 +89,11 @@
                                 <!-- Add more product rows as needed -->
                             </tbody>
                         </table>
+
                     </div>
+                    <!-- </a> -->
+                    <div class="card-actions"></div>
                 </div>
-                <!-- </a> -->
-                <div class="card-actions"></div>
             </div>
         </div>
     </li>

@@ -5932,28 +5932,32 @@ margin-right: 5px;">
                         <div class="nav-inner mobile-nav-inner">
                             <button data-test="hamburger-menu" type="button"
                                 class="clickable button s hamburger-menu clickable--theme-flat clickable--size-auto clickable--bold-weight clickable--regular-font">
-                                <img id="menu-ico" aria-hidden="true" (click)="handleMenuBtnClick()" src="assets/images/icon-hamburger-menu.svg"
-                                    alt="hamburger-menu description" class="img icon iarrow-link-icon loaded"></button>
+                                <img id="menu-ico" aria-hidden="true" (click)="handleMenuBtnClick()"
+                                    src="assets/images/icon-hamburger-menu.svg" alt="hamburger-menu description"
+                                    class="img icon iarrow-link-icon loaded"></button>
                             <a id="logolink" class="clickable link logo clickable--size-inline"
                                 data-test="LogoHomepageLink" href="#home"><img alt="Yoma logo"
                                     src="../../assets/images/yoma.jpg" aria-label="'Lidil' logo"></a>
                             <nav class="actions customed-nav" aria-label="Secondary Navigation">
                                 <ul class="actions-inner">
                                     <li class="search-input-container search-bar-mobile" style="display: flex;">
-                                        <input (keydown)="onInputEnter($event)" aria-label="search-bar search products and recipes"
-                                            data-test="search-bar" type="text" [(ngModel)]="inputSearch" placeholder="search products"
+                                        <input (keydown)="onInputEnter($event)"
+                                            aria-label="search-bar search products and recipes" data-test="search-bar"
+                                            type="text" [(ngModel)]="inputSearch" placeholder="search products"
                                             style="flex: 1;" id="searchInput"
                                             class="clickable button search-input clickable--theme-flat clickable--size-auto clickable--bold-weight clickable--regular-font">
-                                            <span *ngIf="inputSearch" class="clear-icon" (click)="clearSearch($event)">✕</span>
-                                            <button id="searchEnter" class="highlight-button" (click)="handleSearchButtonClick()">
-                                        <img aria-hidden="true"
-                                            src="assets/images/icon-search-icon.svg" alt="search-icon description"
-                                            class="img icon loaded">
+                                        <span *ngIf="inputSearch" class="clear-icon"
+                                            (click)="clearSearch($event)">✕</span>
+                                        <button id="searchEnter" class="highlight-button"
+                                            (click)="handleSearchButtonClick()">
+                                            <img aria-hidden="true" src="assets/images/icon-search-icon.svg"
+                                                alt="search-icon description" class="img icon loaded">
                                         </button>
                                     </li>
                                     <li routerLink="/shoppingList">
                                         <a>
-                                            <div style="width: 30px; text-align: center; color: red;">{{listCount}}</div>
+                                            <div style="width: 30px; text-align: center; color: red;">{{listCount}}
+                                            </div>
                                             <img style="width: 30px;" src="../../assets/images/cart-shopping-solid.svg">
                                         </a>
                                     </li>
@@ -5967,38 +5971,40 @@ margin-right: 5px;">
                                     <ul>
                                         <!-- Home Link -->
                                         <li class="menu-button">
-                                          <a href="#home" style="color: black;">Home</a>
+                                            <a href="#home" style="color: black;">Home</a>
                                         </li>
-                                  <!--Category with Submenu -->
-                  <li class="menu-button" class="dropdown" (click)="categoryDropdown($event)">
-                    <!-- <div (click)="redirectsCategory()">Category</div> -->
-                    <div>Category</div>
-                    <div class="dropdown-content" style="text-align: center;">
-                        <div (click)="redirectsToFreshFood()">Fresh Food</div>
-                        <div (click)="redirectsToFruitsAndVegetables()">Fruits - Vegetables</div>
-                        <div (click)="redirectsToFoodCupboard()">Food Cupboard</div>
-                        <div (click)="redirectsToBeverages()">Beverages</div>
-                        <div (click)="redirectsToBabyProducts()">Baby Products</div>
-                        <div (click)="redirectsToFrozenFood()">Frozen Food</div>
-                        <div (click)="redirectsToBioAndOrganicFood()">Bio & Organic Food</div>
-                        <!-- <div (click)="redirectsToBakery()">Bakery</div> -->
-                        <div (click)="redirectsToPetSupplies()">Pet Supplies</div>
-                        <!-- <div (click)="redirectsToElectronicsAndAppliances()">Electronics & Appliances</div> -->
-                        <!-- <div (click)="redirectsToSmartphonesTabletsAndWearables()">Smartphones, Tablets & Wearables</div> -->
-                        <div (click)="redirectsToBeautyAndPersonalCare()">Beauty & Personal Care</div>
-                        <div (click)="redirectsToCleaning()">Cleaning & Household</div>
-                      </div>
-                  </li>
+                                        <!--Category with Submenu -->
+                                        <li class="menu-button" class="dropdown" (click)="categoryDropdown($event)">
+                                            <!-- <div (click)="redirectsCategory()">Category</div> -->
+                                            <div>Category</div>
+                                            <div class="dropdown-content" style="text-align: center;">
+                                                <div (click)="redirectsToFreshFood()">Fresh Food</div>
+                                                <div (click)="redirectsToFruitsAndVegetables()">Fruits - Vegetables
+                                                </div>
+                                                <div (click)="redirectsToFoodCupboard()">Food Cupboard</div>
+                                                <div (click)="redirectsToBeverages()">Beverages</div>
+                                                <div (click)="redirectsToBabyProducts()">Baby Products</div>
+                                                <div (click)="redirectsToFrozenFood()">Frozen Food</div>
+                                                <div (click)="redirectsToBioAndOrganicFood()">Bio & Organic Food</div>
+                                                <!-- <div (click)="redirectsToBakery()">Bakery</div> -->
+                                                <div (click)="redirectsToPetSupplies()">Pet Supplies</div>
+                                                <!-- <div (click)="redirectsToElectronicsAndAppliances()">Electronics & Appliances</div> -->
+                                                <!-- <div (click)="redirectsToSmartphonesTabletsAndWearables()">Smartphones, Tablets & Wearables</div> -->
+                                                <div (click)="redirectsToBeautyAndPersonalCare()">Beauty & Personal Care
+                                                </div>
+                                                <div (click)="redirectsToCleaning()">Cleaning & Household</div>
+                                            </div>
+                                        </li>
                                         <!-- About Category with Submenu -->
                                         <li class="menu-button">
-                                          <div (click)="redirectsAbout()">About</div>
+                                            <div (click)="redirectsAbout()">About</div>
                                         </li>
 
                                         <!-- Contact Category with Submenu -->
                                         <li class="menu-button">
-                                          <div (click)="redirectsContact()">Contact</div>
+                                            <div (click)="redirectsContact()">Contact</div>
                                         </li>
-                                      </ul>
+                                    </ul>
                                 </div>
                             </nav>
                         </div>
@@ -6008,6 +6014,18 @@ margin-right: 5px;">
 
                 <div id="mainContent">
                     <router-outlet></router-outlet>
+                    <!-- <div>
+                        <div class="note">
+                            <strong>Important:</strong> Prices for certain products at select
+                            supermarkets may not be real-time. Verify current pricing directly
+                            with the store.
+                        </div>
+                        <div class="note" dir="rtl">
+                            <strong>ملاحظة هامة:</strong> قد لا تكون الأسعار لبعض المنتجات في
+                            بعض السوبرماركت محدثة في الوقت الحقيقي. يرجى التحقق من الأسعار
+                            الحالية مباشرةً من المتجر.
+                        </div>
+                    </div> -->
                 </div>
 
 
@@ -6018,8 +6036,8 @@ margin-right: 5px;">
                             <h4 aria-label="quick links" tabindex="0" class="headline linkgroup-title">Quick Links</h4>
                             <div class="linkgroup-body"><a class="clickable link clickable--size-inline"
                                     data-test="home"></a>
-                                <a routerLink="/weeklyad" class="clickable link clickable--size-inline" data-test="weekly-ad" href="/flyer"
-                                    style="font-size: x-large;">View
+                                <a routerLink="/weeklyad" class="clickable link clickable--size-inline"
+                                    data-test="weekly-ad" href="/flyer" style="font-size: x-large;">View
                                     weekly ad</a>
                             </div>
                         </div>
@@ -6035,8 +6053,8 @@ margin-right: 5px;">
                         <footer class="layout footer layout--stack-medium">
                             <section class="layout section-left layout--stack-medium layout--padded"><a
                                     class="clickable link footer-logo clickable--size-inline" href="#about"><img
-                                        alt="Yoma logo description" class="img loaded"
-                                        style="    max-width: 40%;" src="../../assets/images/yoma.jpg"></a>
+                                        alt="Yoma logo description" class="img loaded" style="    max-width: 40%;"
+                                        src="../../assets/images/yoma.jpg"></a>
                                 <div class="layout footer-links layout--stack-small">
                                     <!-- <div class="linkgroup">
                                     <h4 aria-label="get my app" tabindex="0" class="headline linkgroup-title">get
@@ -6073,32 +6091,25 @@ margin-right: 5px;">
                                             connect with us</h4>
                                         <div class="linkgroup-body"><a data-test="instagram"
                                                 aria-label="social-instagram, this link opens up in a new tab"
-                                                href=""
+                                                href="https://www.instagram.com/yoma.supermarkets/"
                                                 class="clickable link clickable--size-auto" target="_blank"
                                                 rel="noopener noreferrer"><img aria-hidden="true"
                                                     src="../../assets/images/icon-social-instagram.svg"
                                                     alt="social-instagram description" class="img icon loaded"> </a><a
                                                 data-test="facebook"
                                                 aria-label="social-facebook, this link opens up in a new tab"
-                                                href=""
+                                                href="https://www.facebook.com/profile.php?id=61556303317495"
                                                 class="clickable link clickable--size-auto" target="_blank"
                                                 rel="noopener noreferrer"><img aria-hidden="true"
                                                     src="../../assets/images/icon-social-facebook.svg"
                                                     alt="social-facebook description" class="img icon loaded"> </a><a
                                                 data-test="twitter"
                                                 aria-label="social-twitter, this link opens up in a new tab"
-                                                href=""
+                                                href="https://twitter.com/YumaSupermarkts"
                                                 class="clickable link clickable--size-auto" target="_blank"
                                                 rel="noopener noreferrer"><img aria-hidden="true"
                                                     src="assets/images/icon-social-twitter.svg"
-                                                    alt="social-twitter description" class="img icon loaded"> </a><a
-                                                data-test="pinterest"
-                                                aria-label="social-pinterest, this link opens up in a new tab"
-                                                href=""
-                                                class="clickable link clickable--size-auto" target="_blank"
-                                                rel="noopener noreferrer"><img aria-hidden="true"
-                                                    src="../../assets/images/icon-social-pinterest.svg"
-                                                    alt="social-pinterest description" class="img icon loaded"> </a>
+                                                    alt="social-twitter description" class="img icon loaded"> </a>
                                         </div>
                                     </div>
                                     <div style="display: none;" class="linkgroup join-mylidl">
@@ -6200,8 +6211,8 @@ margin-right: 5px;">
                         category headings to find out more and change our default settings. However, blocking some types
                         of
                         cookies may impact your experience of the site and the services we are able to offer.
-                        <br><a href="" class="privacy-notice-link" rel="noopener"
-                            target="_blank" aria-label="More information about your privacy, opens in a new tab">More
+                        <br><a href="" class="privacy-notice-link" rel="noopener" target="_blank"
+                            aria-label="More information about your privacy, opens in a new tab">More
                             information</a>
                     </div><button id="accept-recommended-btn-handler">allow all</button>
                     <section class="ot-sdk-row ot-cat-grp">
@@ -6393,4 +6404,3 @@ margin-right: 5px;">
             id="">window.dataLayer = window.dataLayer || []; window.dataLayer.push({ originalLocation: document.location.protocol + "//" + document.location.hostname + document.location.pathname + document.location.search });</script>
     </div>
 </div>
-

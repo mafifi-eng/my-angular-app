@@ -33,6 +33,7 @@ import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
+import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-admin/update-all-super-market-admin.component';
 
 const routes: Routes = [
   {path: 'home', component: ProductComponent},
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path: 'smartphones-tablets-and-wearables', component: SmartphonesTabletsAndWearablesComponent },
   { path: 'shoppingList', component: ShoppingListComponent },
   { path: 'weeklyad', component: WeeklyadComponent },
+  { path: 'updateAll', component: UpdateAllSuperMarketAdminComponent},
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
 ];

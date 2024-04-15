@@ -32,4 +32,8 @@ export class AdminComponent {
     this.router.navigate(['/oscarParser']);
   }
 
+  updateAllLinkHandler() {
+    this.router.navigate(['/updateAll']);
+    }
+
 }

@@ -54,7 +54,7 @@ export class MetroParserComponent implements OnInit {
   constructor(private translationService: TranslationService,
     private http: HttpClient, private clipboard: Clipboard, private scraperService: ScraperService) { }
 
-  async parseHTML(html: string): Promise<void> {
+  async parseHTMLMetro(html: string): Promise<void> {
     const $ = cheerio.load(html);
     const products: Product[] = [];
     const extracteduUrls: any[] = [];
@@ -69,7 +69,7 @@ export class MetroParserComponent implements OnInit {
       const element = $('.product-card.card').eq(index);
 
       try {
-        const productName = this.getProductName(element);
+        const productName = this.getProductNameMetro(element);
         const productPrice = element.find('.card.product-card .price .after').html()?.trim().substring(0, element.find('.card.product-card .price .after').html()?.trim().lastIndexOf(' ')) || '';
         const isRewardsProgram = element.find('span.ProductCard__BadgeLabel.ProductCard__BadgeLabel--discount').html()?.trim() || '';
         const imageUrl = element.find('.img-holder.lazy').attr('data-src');
@@ -127,13 +127,13 @@ export class MetroParserComponent implements OnInit {
     }
   }
 
-  async returnPageIndexHTML(html: string): Promise<string> {
+  async returnPageIndexHTMLMetro(html: string): Promise<string> {
     const $ = cheerio.load(html);
     const pageItem = $('nav > ul > li.page-item').eq(-2).find('a').html()?.trim() || '';
     return pageItem;
   }
 
-  async extractProducts(): Promise<void> {
+  async extractProductsMetro(): Promise<void> {
     const myButton = document.querySelector('.styled-button') as HTMLButtonElement;
     myButton.disabled = true;
     myButton.classList.add('disabled-link');
@@ -161,14 +161,14 @@ export class MetroParserComponent implements OnInit {
     ];
     for (const url of urls) {
       try {
-        const html = await this.getHtmlFromWeb(url);
-        let pageIndex = await this.returnPageIndexHTML(html);
+        const html = await this.getHtmlFromWebMetro(url);
+        let pageIndex = await this.returnPageIndexHTMLMetro(html);
 
         for (let i = 1; i < (parseInt(pageIndex)) + 1; i++) {
           const parserUrl = url + '?page=' + i;
           try {
-            const html = await this.getHtmlFromWeb(parserUrl);
-            await this.parseHTML(html);
+            const html = await this.getHtmlFromWebMetro(parserUrl);
+            await this.parseHTMLMetro(html);
           } catch (error) {
             console.error('Error fetching or processing data:', error);
           }
@@ -183,7 +183,7 @@ export class MetroParserComponent implements OnInit {
     }
   }
 
-  private getProductName(element: any): string {
+  private getProductNameMetro(element: any): string {
     return element.find('.card.product-card h5').html()?.trim().replace(/&amp;/g, '') || '';
   }
 
@@ -269,7 +269,7 @@ export class MetroParserComponent implements OnInit {
     );
   }
 
-  private async getHtmlFromWeb(url: string): Promise<string> {
+  private async getHtmlFromWebMetro(url: string): Promise<string> {
     const requestData = { url };
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
