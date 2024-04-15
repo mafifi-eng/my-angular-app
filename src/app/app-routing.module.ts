@@ -10,13 +10,6 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { KnowSubscribeComponent } from './know-subscribe/know-subscribe.component';
 import { SearchResultComponent } from './search-result/search-result.component';
-import { ParserCarrefoureComponent } from './parser-carrefoure/parser-carrefoure.component';
-import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
-import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
-import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
-import { MetroParserComponent } from './metro-parser/metro-parser.component';
-import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 import { BabyProductsComponent } from './baby-products/baby-products.component';
 import { BakeryComponent } from './bakery/bakery.component';
 import { BeautyAndPersonalCareComponent } from './beauty-and-personal-care/beauty-and-personal-care.component';
@@ -33,7 +26,6 @@ import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
-import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-admin/update-all-super-market-admin.component';
 
 const routes: Routes = [
   {path: 'home', component: ProductComponent},
@@ -47,13 +39,6 @@ const routes: Routes = [
   { path: 'know-subscribe', component: KnowSubscribeComponent },
   { path: 'success', component: SuccessSubscribeComponent },
   { path: 'search-page', component: SearchResultComponent },
-  { path: 'admin', component: LoginComponent },
-  { path: 'dashboard', component: AdminComponent },
-  { path: 'ParserCarrefoure', component: ParserCarrefoureComponent },
-  { path: 'SpinneysParser', component: SpinneysParserComponent },
-  { path: 'SeoudiParser', component: SeoudiParserComponent },
-  { path: 'metroParser', component: MetroParserComponent },
-  { path: 'oscarParser', component: OscarParserComponent },
   { path: 'baby-products', component: BabyProductsComponent },
   { path: 'bakery', component: BakeryComponent },
   { path: 'beauty-and-personal-care', component: BeautyAndPersonalCareComponent },
@@ -70,7 +55,6 @@ const routes: Routes = [
   { path: 'smartphones-tablets-and-wearables', component: SmartphonesTabletsAndWearablesComponent },
   { path: 'shoppingList', component: ShoppingListComponent },
   { path: 'weeklyad', component: WeeklyadComponent },
-  { path: 'updateAll', component: UpdateAllSuperMarketAdminComponent},
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
 ];

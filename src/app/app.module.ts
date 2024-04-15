@@ -20,15 +20,9 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { KnowSubscribeComponent } from './know-subscribe/know-subscribe.component';
 import { SearchResultComponent } from './search-result/search-result.component';
-import { ParserCarrefoureComponent} from './parser-carrefoure/parser-carrefoure.component'
 import { TranslationService } from './services/translation-service.service';
-import { LoginComponent } from './login/login.component';
-import { SpinneysParserComponent } from './spinneys-parser/spinneys-parser.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { SeoudiParserComponent } from './seoudi-parser/seoudi-parser.component';
-import { MetroParserComponent } from './metro-parser/metro-parser.component';
 import { ScraperService } from './services/scraper-service';
-import { OscarParserComponent } from './oscar-parser/oscar-parser.component';
 import { ShoppingListService } from './services/shopping-list.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { BabyProductsComponent } from './baby-products/baby-products.component';
@@ -46,7 +40,6 @@ import { HealthAndFitnessComponent } from './health-and-fitness/health-and-fitne
 import { PetSuppliesComponent } from './pet-supplies/pet-supplies.component';
 import { SmartphonesTabletsAndWearablesComponent } from './smartphones-tablets-and-wearables/smartphones-tablets-and-wearables.component';
 import { WeeklyadComponent } from './weeklyad/weeklyad.component';
-import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-admin/update-all-super-market-admin.component';
 
 
 
@@ -64,12 +57,6 @@ import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-ad
     MainComponent,
     KnowSubscribeComponent,
     SearchResultComponent,
-    ParserCarrefoureComponent,
-    LoginComponent,
-    SpinneysParserComponent,
-    SeoudiParserComponent,
-    MetroParserComponent,
-    OscarParserComponent,
     ShoppingListComponent,
     BabyProductsComponent,
     BakeryComponent,
@@ -86,7 +73,6 @@ import { UpdateAllSuperMarketAdminComponent } from './update-all-super-market-ad
     PetSuppliesComponent,
     SmartphonesTabletsAndWearablesComponent,
     WeeklyadComponent,
-    UpdateAllSuperMarketAdminComponent
   ],
   imports: [
     BrowserModule,
